@@ -100,6 +100,9 @@ p { margin: 0; }
 .btn-ghost { color: var(--accent); background: transparent; }
 .btn-ghost:hover { background: var(--ok-bg); }
 .nota { font-size: 0.9rem; color: var(--muted); }
+img.carc { display: block; width: 96px; height: 96px; margin-bottom: 18px; }
+.pie-carc { display: inline-flex; align-items: center; gap: 10px; }
+.pie-carc img { border-radius: 50%; }
 
 .ficha { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 20px 22px; font-size: 0.95rem; }
 .ficha h2 { font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; font-stretch: 100%; }
@@ -430,6 +433,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     <section class="s" id="socios" aria-labelledby="t-socios">
       <div class="dos">
         <div class="s-head" style="margin:0">
+          <img class="carc" src="assets/carc-logo.webp" alt="Logo del Club Andino Río Cuarto" width="96" height="96" loading="lazy">
           <h2 id="t-socios">Si sos socio del CARC</h2>
           <p class="prose">La app te muestra cuánto debés y te deja pagar con Mercado Pago, guarda tu credencial con código QR, te avisa las novedades del club y registra tus visitas al muro y a las clases.</p>
         </div>
@@ -463,7 +467,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
 
   <footer>
     <span>appClub · hecha en Río Cuarto, Córdoba</span>
-    <span>Creada para el Club Andino Río Cuarto</span>
+    <span class="pie-carc"><img src="assets/carc-logo.webp" alt="" width="28" height="28" loading="lazy">Creada para el Club Andino Río Cuarto</span>
   </footer>
 </div>
 
