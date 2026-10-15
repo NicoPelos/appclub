@@ -102,6 +102,10 @@ img.carc { display: block; width: 96px; height: 96px; margin-bottom: 18px; }
 .socios-bg { --ink: #EAF2F3; --muted: #C6D6D9; --line: rgba(255,255,255,.22); --accent: #7FE0CB; color: var(--ink); padding: clamp(24px, 5vw, 56px); border-radius: 14px; background: linear-gradient(rgba(8,22,28,.74), rgba(8,22,28,.84)), url(assets/montanas.webp) center / cover no-repeat #0C1A1F; }
 .socios-bg h2, .socios-bg h3 { color: var(--ink); }
 .socios-bg .prose, .socios-bg p { color: var(--muted); }
+.foto-club { margin: 0 0 clamp(24px, 4vw, 40px); }
+.foto-club img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; border-radius: 14px; }
+.foto-club figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 10px; }
+@media (max-width: 640px) { .foto-club img { aspect-ratio: 4 / 3; object-position: 30% center; } }
 .pie-carc { display: inline-flex; align-items: center; gap: 10px; }
 .pie-carc img { border-radius: 50%; }
 
@@ -407,6 +411,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     </section>
 
     <section class="s" id="organizaciones" aria-labelledby="t-org">
+      <figure class="foto-club"><img src="assets/muro-carc.webp" width="1600" height="720" alt="Clase en el muro de escalada del Club Andino Río Cuarto: un grupo de alumnos y profesores al pie de un muro de colores, con la bandera del club colgada a la izquierda" loading="lazy"><figcaption>El muro de escalada del Club Andino Río Cuarto, donde se usa el sistema.</figcaption></figure>
       <div class="dos">
         <div>
           <div class="s-head">
