@@ -1,5 +1,8 @@
 wrangler.jsonc
 .assetsignore
+.gitignore
 README.md
+docs
+ejemplos
 .git
 .github

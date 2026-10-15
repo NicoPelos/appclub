@@ -1,0 +1,16 @@
+{
+  "name": "appclub-ejemplo-cuotas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Services de cuotas de appCARC con sus tests unitarios, aislados del resto del backend",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "mutation": "stryker run"
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "^8.7.1",
+    "@stryker-mutator/vitest-runner": "^8.7.1",
+    "vitest": "^1.6.0"
+  }
+}

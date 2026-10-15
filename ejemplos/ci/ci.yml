@@ -1,0 +1,85 @@
+# Workflow de CI del backend de appCARC (versión de referencia).
+# Corre en cada pull request y en cada push a main. Ninguno de los tres jobs
+# usa secretos: los tests definen sus propios valores de prueba.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Tests unitarios: modelos mockeados, sin base de datos.
+  unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+  # Tests de integración contra un MongoDB real, levantado dentro del runner.
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # No se usa el bloque "services" porque hace falta el flag --replSet en
+      # el comando de arranque de mongod, y ese bloque solo acepta flags de
+      # "docker run", no del entrypoint del contenedor. Las transacciones
+      # (mongoose.startSession) no funcionan en un mongod standalone.
+      - name: Levantar MongoDB con replica set rs0
+        run: |
+          docker run -d --name mongo -p 27017:27017 mongo:6.0 --replSet rs0 --bind_ip_all
+          for i in $(seq 1 30); do
+            docker exec mongo mongosh --quiet --eval "db.adminCommand('ping')" && break
+            sleep 1
+          done
+          docker exec mongo mongosh --quiet --eval "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]})"
+
+      # El setup de los tests de integración apaga las integraciones externas
+      # (planillas de Google) y define sus propios secretos de prueba, así que
+      # acá no se pasa ninguna credencial. La base es efímera, solo del runner.
+      - run: npm run test:integration
+        env:
+          MONGO_URI: mongodb://localhost:27017/appcarc_test?replicaSet=rs0
+
+  # Configuración del gateway nginx: verifica qué IP de cliente le llega al
+  # backend por cada listener (uno confía en el header del proxy de entrada y
+  # el otro lo ignora, para que no se pueda falsificar desde afuera).
+  nginx-gateway:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # El script levanta el gateway en Docker con un backend de prueba y
+      # compara la IP que recibe por cada listener.
+      - run: bash scripts/test-nginx-gateway.sh
