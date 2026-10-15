@@ -101,6 +101,9 @@ p { margin: 0; }
 .btn-ghost:hover { background: var(--ok-bg); }
 .nota { font-size: 0.9rem; color: var(--muted); }
 img.carc { display: block; width: 96px; height: 96px; margin-bottom: 18px; }
+.socios-bg { --ink: #EAF2F3; --muted: #C6D6D9; --line: rgba(255,255,255,.22); --accent: #7FE0CB; color: var(--ink); padding: clamp(24px, 5vw, 56px); border-radius: 14px; background: linear-gradient(rgba(8,22,28,.74), rgba(8,22,28,.84)), url(assets/montanas.webp) center / cover no-repeat #0C1A1F; }
+.socios-bg h2, .socios-bg h3 { color: var(--ink); }
+.socios-bg .prose, .socios-bg p { color: var(--muted); }
 .pie-carc { display: inline-flex; align-items: center; gap: 10px; }
 .pie-carc img { border-radius: 50%; }
 
@@ -431,7 +434,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     </section>
 
     <section class="s" id="socios" aria-labelledby="t-socios">
-      <div class="dos">
+      <div class="dos socios-bg">
         <div class="s-head" style="margin:0">
           <img class="carc" src="assets/carc-logo.webp" alt="Logo del Club Andino Río Cuarto" width="96" height="96" loading="lazy">
           <h2 id="t-socios">Si sos socio del CARC</h2>
