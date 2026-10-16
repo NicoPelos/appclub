@@ -232,6 +232,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       <a href="#hechos">Qué se puede comprobar</a>
       <a href="#modulos">Qué incluye</a>
       <a href="#tecnica">Cómo está hecho</a>
+      <a href="#ia">Trabajo con IA</a>
       <a href="#organizaciones">Para organizaciones</a>
       <a href="#socios">Socios del CARC</a>
       <a href="#apoyar">Apoyar</a>
@@ -302,7 +303,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       </ul>
       <div class="proceso">
         <h3>Cómo trabajo</h3>
-        <p>Uso asistentes de IA como herramienta y las decisiones las tomo yo. Primero escribo qué se quiere lograr, después se programa, reviso cada cambio y entra solo si pasan las pruebas. Las especificaciones y las decisiones quedan escritas en el repositorio público.</p>
+        <p>Uso asistentes de IA como herramienta y las decisiones las tomo yo. Cómo lo hago, con reglas, especificaciones y pruebas que lo sostienen, está en <a href="#ia">Trabajo con IA</a>.</p>
       </div>
     </section>
 
@@ -463,6 +464,23 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
             <li>Este sitio en inglés</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section class="s" id="ia" aria-labelledby="t-ia">
+      <div class="s-head">
+        <h2 id="t-ia">Cómo trabajo con IA</h2>
+        <p class="lede">Un asistente escribe código rápido. Lo que lo hace confiable es lo que lo rodea: reglas escritas, especificaciones, pruebas y una persona que revisa.</p>
+      </div>
+      <ul class="hechos">
+        <li class="hecho"><h3>Reglas que se leen en cada sesión</h3><p>Cada repositorio tiene un archivo de reglas que el asistente lee al empezar: por ejemplo, que toda consulta filtre por club, o que no se borre código “sin uso” sin verificarlo. No dependen de mi memoria.</p><a href="https://github.com/NicoPelos/appclub/blob/main/docs/como-trabajo-con-ia.md#reglas-que-el-asistente-lee-en-cada-sesión" target="_blank" rel="noopener">Leer las reglas</a></li>
+        <li class="hecho"><h3>Primero se escribe qué se quiere</h3><p>Cuando la lógica es delicada (dinero, fechas, permisos), la especificación y el contrato se escriben antes del código, y los tests llevan el nombre de la regla que fijan.</p><a href="https://github.com/NicoPelos/appclub/blob/main/docs/specs/cuotas-calcularDeuda.md" target="_blank" rel="noopener">Ver una especificación</a></li>
+        <li class="hecho"><h3>Pruebas que se prueban a sí mismas</h3><p>El mutation testing rompe el código a propósito y mide si los tests lo notan. Hoy detectan el 94,9 % de los cambios.</p><a href="https://github.com/NicoPelos/appclub/tree/main/ejemplos/cuotas" target="_blank" rel="noopener">Ver el código</a></li>
+        <li class="hecho"><h3>Cada cambio se revisa</h3><p>Todo entra por pull request, con el CI corriendo, y lo reviso antes de integrarlo. Las decisiones quedan escritas en el repositorio, no en una conversación.</p><a href="https://github.com/NicoPelos/appclub/blob/main/docs/como-trabajo-con-ia.md#el-circuito-de-un-cambio" target="_blank" rel="noopener">Ver el circuito</a></li>
+      </ul>
+      <div class="proceso">
+        <h3>Qué no hago</h3>
+        <p>No dejo que el asistente decida el alcance de un cambio, no acepto código que no entiendo y no pruebo con datos reales de socios: todo sale de un club de demostración con datos inventados.</p>
       </div>
     </section>
 
