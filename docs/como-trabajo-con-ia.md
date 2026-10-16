@@ -1,6 +1,6 @@
 # Cómo trabajo con asistentes de IA
 
-appClub se programa con ayuda de asistentes de IA (Claude Code). Un asistente escribe código rápido, pero eso no alcanza para que el resultado sea confiable. Lo que lo vuelve confiable es el entorno que lo rodea: reglas escritas, especificaciones, pruebas y una persona que revisa. A ese conjunto se lo suele llamar *harness* (arnés). Acá está el mío, con dónde mirar cada pieza.
+appClub se programa con ayuda de asistentes de IA (Claude Code). Un asistente escribe código rápido, pero eso no alcanza para que el resultado sea confiable. Lo que lo vuelve confiable es el entorno que lo rodea: reglas escritas, especificaciones, pruebas y una persona que revisa. A ese conjunto se lo suele llamar *harness* (arnés), y la práctica de diseñarlo, *harness engineering*. Acá está el mío, con dónde mirar cada pieza: sus archivos reales están copiados en [`ejemplos/harness/`](../ejemplos/harness/).
 
 Las decisiones las tomo yo. El asistente propone y escribe; no decide qué se hace ni qué entra.
 
@@ -12,6 +12,13 @@ Las decisiones las tomo yo. El asistente propone y escribe; no decide qué se ha
 4. **Un pull request** con el cambio. Corre el CI: tests unitarios, tests de integración contra MongoDB real y una prueba del gateway ([`ejemplos/ci/ci.yml`](../ejemplos/ci/ci.yml)).
 5. **Revisión mía** antes de integrar. No integro un cambio con el CI en rojo.
 6. **Las decisiones quedan escritas** en el repositorio, no en la memoria de una conversación.
+
+## Las piezas del harness
+
+- **Archivos de contexto** (`CLAUDE.md`, `AGENTS.md`). Cada uno de los cuatro repositorios tiene el suyo, y hay un mapa general que los conecta. Fijan estructura, reglas y comandos. Ver [`CLAUDE.backend.md`](../ejemplos/harness/CLAUDE.backend.md) y [`AGENTS.mobile.md`](../ejemplos/harness/AGENTS.mobile.md).
+- **Hooks.** Un hook `PreToolUse` corre antes de cada comando o edición del asistente y puede bloquearlo o pedir confirmación: impide editar `.env`, hacer force push a `main`, compilar frontends en la Raspberry Pi y escribir en la base de producción sin confirmar. Tiene su propio script de pruebas, con 49 casos. Ver [`hooks/`](../ejemplos/harness/hooks/).
+- **Permisos.** Una lista de comandos permitidos y una regla explícita sobre producción: la lectura está permitida y la escritura no. Ver [`settings.ejemplo.json`](../ejemplos/harness/settings.ejemplo.json).
+- **Revisión automática con Claude en GitHub Actions.** Una vez por semana revisa un módulo del backend, en modo solo lectura, y abre un issue por cada hallazgo, sin duplicar los que ya existen. Ver [`workflows/claude-nightly-review.yml`](../ejemplos/harness/workflows/claude-nightly-review.yml).
 
 ## Reglas que el asistente lee en cada sesión
 

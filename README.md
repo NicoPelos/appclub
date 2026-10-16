@@ -26,6 +26,7 @@ Infraestructura: Docker Compose sobre una Raspberry Pi 5 con SSD, publicada con 
 | [`docs/specs/cuotas-calcularDeuda.md`](docs/specs/cuotas-calcularDeuda.md) | Especificación del cálculo de deuda de un socio: entradas, salidas, reglas, casos concretos y casos borde. |
 | [`ejemplos/cuotas/`](ejemplos/cuotas/) | Los services de cuotas con sus 99 tests unitarios y la configuración de mutation testing (Stryker, 94,9 % de mutantes eliminados). Corre de forma independiente: `npm install && npx vitest run`. |
 | [`ejemplos/ci/ci.yml`](ejemplos/ci/ci.yml) | Workflow de CI del backend: tests unitarios, tests de integración contra MongoDB con replica set y prueba del gateway nginx. |
+| [`ejemplos/harness/`](ejemplos/harness/) | El harness que rodea al asistente de IA: archivos `CLAUDE.md` y `AGENTS.md`, un hook que bloquea acciones peligrosas (con sus 49 pruebas), permisos y la revisión semanal con Claude en GitHub Actions. Se explica en [`docs/como-trabajo-con-ia.md`](docs/como-trabajo-con-ia.md). |
 
 ## Algunos datos
 

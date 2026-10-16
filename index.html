@@ -150,6 +150,9 @@ section.s { padding-block: clamp(44px, 7vw, 88px); border-top: 1px solid var(--l
 .hecho { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto; gap: 8px clamp(16px, 3vw, 40px); padding-block: 20px; border-top: 1px solid var(--line); align-items: baseline; }
 .hecho p { color: var(--muted); }
 .hecho a { font-weight: 600; white-space: nowrap; }
+.claves { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.claves li { padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: .88rem; font-weight: 600; color: var(--accent); }
+.hecho code { font-size: .88em; }
 .proceso { margin-top: clamp(28px, 4vw, 44px); padding: 20px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; max-width: 760px; }
 .proceso h3 { margin-bottom: 6px; }
 .proceso p { color: var(--muted); }
@@ -469,18 +472,23 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
 
     <section class="s" id="ia" aria-labelledby="t-ia">
       <div class="s-head">
-        <h2 id="t-ia">Cómo trabajo con IA</h2>
-        <p class="lede">Un asistente escribe código rápido. Lo que lo hace confiable es lo que lo rodea: reglas escritas, especificaciones, pruebas y una persona que revisa.</p>
+        <h2 id="t-ia">Cómo trabajo con IA: el harness</h2>
+        <p class="lede">Un asistente escribe código rápido. Lo que lo hace confiable es su <em>harness</em>: el conjunto de reglas, límites, especificaciones y pruebas que lo rodea, y una persona que revisa.</p>
+        <ul class="claves" aria-label="Palabras clave">
+          <li>Harness engineering</li><li>CLAUDE.md</li><li>AGENTS.md</li><li>Hooks</li><li>Permisos</li><li>GitHub Actions</li><li>Spec-driven development</li><li>Mutation testing</li>
+        </ul>
       </div>
       <ul class="hechos">
-        <li class="hecho"><h3>Reglas que se leen en cada sesión</h3><p>Cada repositorio tiene un archivo de reglas que el asistente lee al empezar: por ejemplo, que toda consulta filtre por club, o que no se borre código “sin uso” sin verificarlo. No dependen de mi memoria.</p><a href="https://github.com/NicoPelos/appclub/blob/main/docs/como-trabajo-con-ia.md#reglas-que-el-asistente-lee-en-cada-sesión" target="_blank" rel="noopener">Leer las reglas</a></li>
+        <li class="hecho"><h3>Archivos de contexto</h3><p>Los cuatro repositorios tienen su <code>CLAUDE.md</code>, hay un mapa general que los conecta y la app suma un <code>AGENTS.md</code>. El asistente los lee al empezar cada sesión: estructura, comandos y reglas como “toda consulta filtra por club” o “no borrar código sin uso sin verificarlo”.</p><a href="https://github.com/NicoPelos/appclub/blob/main/ejemplos/harness/CLAUDE.backend.md" target="_blank" rel="noopener">Leer uno</a></li>
+        <li class="hecho"><h3>Hooks que frenan lo peligroso</h3><p>Un hook corre antes de cada acción del asistente y bloquea editar archivos con secretos, hacer force push a <code>main</code>, compilar en la Raspberry Pi y escribir en la base de producción sin confirmar. Tiene 49 pruebas propias.</p><a href="https://github.com/NicoPelos/appclub/tree/main/ejemplos/harness/hooks" target="_blank" rel="noopener">Ver el hook</a></li>
+        <li class="hecho"><h3>Permisos explícitos</h3><p>Una lista de comandos permitidos y una regla clara sobre producción: se puede leer, no escribir.</p><a href="https://github.com/NicoPelos/appclub/blob/main/ejemplos/harness/settings.ejemplo.json" target="_blank" rel="noopener">Ver la configuración</a></li>
+        <li class="hecho"><h3>Revisión semanal automática</h3><p>Una vez por semana, Claude revisa un módulo del backend en GitHub Actions, en solo lectura, y abre un issue por cada hallazgo sin duplicar los que ya existen. Ya generó más de 120.</p><a href="https://github.com/NicoPelos/appclub/blob/main/ejemplos/harness/workflows/claude-nightly-review.yml" target="_blank" rel="noopener">Ver el workflow</a></li>
         <li class="hecho"><h3>Primero se escribe qué se quiere</h3><p>Cuando la lógica es delicada (dinero, fechas, permisos), la especificación y el contrato se escriben antes del código, y los tests llevan el nombre de la regla que fijan.</p><a href="https://github.com/NicoPelos/appclub/blob/main/docs/specs/cuotas-calcularDeuda.md" target="_blank" rel="noopener">Ver una especificación</a></li>
         <li class="hecho"><h3>Pruebas que se prueban a sí mismas</h3><p>El mutation testing rompe el código a propósito y mide si los tests lo notan. Hoy detectan el 94,9 % de los cambios.</p><a href="https://github.com/NicoPelos/appclub/tree/main/ejemplos/cuotas" target="_blank" rel="noopener">Ver el código</a></li>
-        <li class="hecho"><h3>Cada cambio se revisa</h3><p>Todo entra por pull request, con el CI corriendo, y lo reviso antes de integrarlo. Las decisiones quedan escritas en el repositorio, no en una conversación.</p><a href="https://github.com/NicoPelos/appclub/blob/main/docs/como-trabajo-con-ia.md#el-circuito-de-un-cambio" target="_blank" rel="noopener">Ver el circuito</a></li>
       </ul>
       <div class="proceso">
-        <h3>Qué no hago</h3>
-        <p>No dejo que el asistente decida el alcance de un cambio, no acepto código que no entiendo y no pruebo con datos reales de socios: todo sale de un club de demostración con datos inventados.</p>
+        <h3>Las decisiones las tomo yo</h3>
+        <p>Cada cambio entra por pull request, con el CI corriendo, y lo reviso antes de integrarlo. No dejo que el asistente decida el alcance, no acepto código que no entiendo y no pruebo con datos reales de socios: todo sale de un club de demostración con datos inventados. <a href="https://github.com/NicoPelos/appclub/blob/main/docs/como-trabajo-con-ia.md" target="_blank" rel="noopener">Leer cómo es el circuito completo</a>.</p>
       </div>
     </section>
 

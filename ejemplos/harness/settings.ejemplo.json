@@ -1,0 +1,22 @@
+{
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Lectura de solo consulta contra la base de producción del club, vía ssh + docker exec + mongosh, con métodos de solo lectura (find, findOne, countDocuments, aggregate, distinct, show collections). No requiere confirmación."
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Cualquier escritura contra la base de producción (update, insert, delete, replace, bulkWrite, drop, createIndex, rename, mongorestore), incluso por ssh/docker exec, sigue bloqueada o requiere confirmación explícita."
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": ".claude/hooks/block-dangerous.sh" }
+        ]
+      }
+    ]
+  }
+}
