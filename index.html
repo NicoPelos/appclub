@@ -114,7 +114,11 @@ img.carc { display: block; width: 96px; height: 96px; margin-bottom: 18px; }
 .modulos-lista p { margin: 0; color: var(--muted); }
 @media (max-width: 860px) { .modulos { grid-template-columns: minmax(0, 1fr); } }
 .modulos-lista li.con-mini { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: start; }
-.modulos-lista img.mini { width: 96px; height: auto; aspect-ratio: 240 / 533; border-radius: 10px; border: 1px solid var(--line); display: block; }
+.modulos-lista img.mini { width: 96px; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+.modulos-lista .mini-link { display: block; line-height: 0; }
+.modulos-lista li.con-mini.ancho { grid-template-columns: 150px minmax(0, 1fr); }
+.modulos-lista img.mini.ancho { width: 150px; }
+@media (max-width: 640px) { .modulos-lista li.con-mini.ancho { grid-template-columns: 110px minmax(0, 1fr); } .modulos-lista img.mini.ancho { width: 110px; } }
 .pie-carc { display: inline-flex; align-items: center; gap: 10px; }
 .pie-carc img { border-radius: 50%; }
 
@@ -313,8 +317,8 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <div class="modulo-grupo">
           <h3>Para la administración</h3>
           <ul class="modulos-lista">
-            <li><h4>Auditoría con marcha atrás</h4><p>Cada alta, cambio o baja queda registrada con quién la hizo, cuándo y cómo estaba el dato antes y después. Se filtra por recurso, usuario y fechas, y un cambio se puede revertir.</p></li>
-            <li><h4>Roles a medida</h4><p>Más de 50 permisos. Cada club crea sus propios roles, elige qué puede hacer cada uno y los edita cuando quiera. El cambio rige al momento, sin reiniciar nada.</p></li>
+            <li class="con-mini ancho"><a class="mini-link" href="assets/full-auditoria.webp" target="_blank" rel="noopener" title="Ver más grande"><img class="mini ancho" src="assets/mini-auditoria.webp" width="300" height="114" alt="Pantalla de Auditoría del panel de staff: lista de cambios con usuario, acción, recurso y estado, y los enlaces Ver detalle y Revertir" loading="lazy"></a><div><h4>Auditoría con marcha atrás</h4><p>Cada alta, cambio o baja queda registrada con quién la hizo, cuándo y cómo estaba el dato antes y después. Se filtra por recurso, usuario y fechas, y un cambio se puede revertir.</p></div></li>
+            <li class="con-mini ancho"><a class="mini-link" href="assets/full-roles.webp" target="_blank" rel="noopener" title="Ver más grande"><img class="mini ancho" src="assets/mini-roles.webp" width="300" height="251" alt="Edición de un rol en el panel de superadministración: nombre y permisos agrupados por módulo, con casillas para elegir cada uno" loading="lazy"></a><div><h4>Roles a medida</h4><p>Más de 50 permisos. Cada club crea sus propios roles, elige qué puede hacer cada uno y los edita cuando quiera. El cambio rige al momento, sin reiniciar nada.</p></div></li>
             <li><h4>Cobros con Mercado Pago</h4><p>Link de pago, confirmación por webhook firmado y conciliación contra los movimientos de caja, con cada pago vinculado a su movimiento. <a href="https://github.com/NicoPelos/appclub/blob/main/docs/arquitectura.md#pagos" target="_blank" rel="noopener">Cómo funciona</a></p></li>
             <li><h4>Planillas de Google para el contador</h4><p>Todas las noches el sistema vuelca los datos a una planilla de Google Sheets con varias pestañas (resumen con gráficos, socios, cuotas, cobros, movimientos, asistencias y más). Queda lista para el contador o para el socio que quiera ver los movimientos.</p></li>
             <li><h4>Inventario con IA</h4><p>Se le saca una foto a un objeto y un modelo de visión (Gemini) propone el nombre, la categoría y la descripción para que el staff los revise y los guarde.</p></li>
@@ -323,9 +327,9 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <div class="modulo-grupo">
           <h3>Para los socios</h3>
           <ul class="modulos-lista">
-            <li><h4>Un juego para la comunidad</h4><p>“Escalada Infinita”, un mini juego dentro de la app con podio semanal y podio histórico del club. Sirve para que los socios entren seguido y se pique la competencia sana.</p></li>
-            <li><h4>Topos y senderos</h4><p>Cada club arma su guía de topos de escalada y senderos de trekking por provincia, con enlaces a sitios como theCrag y Wikiloc.</p></li>
-            <li class="con-mini"><img class="mini" src="assets/mini-credencial.webp" width="96" height="213" alt="Pantalla de la credencial del socio con su código QR" loading="lazy"><div><h4>Cuenta al día</h4><p>El socio ve lo que debe, paga desde el teléfono y guarda su credencial con código QR.</p></div></li>
+            <li class="con-mini"><a class="mini-link" href="assets/full-juego.webp" target="_blank" rel="noopener" title="Ver más grande"><img class="mini" src="assets/mini-juego.webp" width="240" height="533" alt="Juego Escalada Infinita con el podio total y semanal de los socios" loading="lazy"></a><div><h4>Un juego para la comunidad</h4><p>“Escalada Infinita”, un mini juego dentro de la app con podio semanal y podio histórico del club. Sirve para que los socios entren seguido y se pique la competencia sana.</p></div></li>
+            <li class="con-mini"><a class="mini-link" href="assets/full-topos.webp" target="_blank" rel="noopener" title="Ver más grande"><img class="mini" src="assets/mini-topos.webp" width="240" height="533" alt="Pantalla de topos de escalada con zonas por provincia, como La Calera y Los Gigantes en Córdoba" loading="lazy"></a><div><h4>Topos y senderos</h4><p>Cada club arma su guía de topos de escalada y senderos de trekking por provincia, con enlaces a sitios como theCrag y Wikiloc.</p></div></li>
+            <li class="con-mini"><a class="mini-link" href="assets/full-credencial.webp" target="_blank" rel="noopener" title="Ver más grande"><img class="mini" src="assets/mini-credencial.webp" width="240" height="533" alt="Pantalla de la credencial del socio con su código QR" loading="lazy"></a><div><h4>Cuenta al día</h4><p>El socio ve lo que debe, paga desde el teléfono y guarda su credencial con código QR.</p></div></li>
           </ul>
         </div>
       </div>
