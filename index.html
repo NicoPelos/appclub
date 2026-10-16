@@ -113,6 +113,8 @@ img.carc { display: block; width: 96px; height: 96px; margin-bottom: 18px; }
 .modulos-lista h4 { margin: 0 0 6px; font-size: 1.05rem; }
 .modulos-lista p { margin: 0; color: var(--muted); }
 @media (max-width: 860px) { .modulos { grid-template-columns: minmax(0, 1fr); } }
+.modulos-lista li.con-mini { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: start; }
+.modulos-lista img.mini { width: 96px; height: auto; aspect-ratio: 240 / 533; border-radius: 10px; border: 1px solid var(--line); display: block; }
 .pie-carc { display: inline-flex; align-items: center; gap: 10px; }
 .pie-carc img { border-radius: 50%; }
 
@@ -323,7 +325,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
           <ul class="modulos-lista">
             <li><h4>Un juego para la comunidad</h4><p>“Escalada Infinita”, un mini juego dentro de la app con podio semanal y podio histórico del club. Sirve para que los socios entren seguido y se pique la competencia sana.</p></li>
             <li><h4>Topos y senderos</h4><p>Cada club arma su guía de topos de escalada y senderos de trekking por provincia, con enlaces a sitios como theCrag y Wikiloc.</p></li>
-            <li><h4>Cuenta al día</h4><p>El socio ve lo que debe, paga desde el teléfono y guarda su credencial con código QR.</p></li>
+            <li class="con-mini"><img class="mini" src="assets/mini-credencial.webp" width="96" height="213" alt="Pantalla de la credencial del socio con su código QR" loading="lazy"><div><h4>Cuenta al día</h4><p>El socio ve lo que debe, paga desde el teléfono y guarda su credencial con código QR.</p></div></li>
           </ul>
         </div>
       </div>
