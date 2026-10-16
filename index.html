@@ -136,7 +136,7 @@ section.s { padding-block: clamp(44px, 7vw, 88px); border-top: 1px solid var(--l
 .proceso p { color: var(--muted); }
 
 /* pantallas */
-.pantallas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 36px); margin: 0; max-width: 880px; }
+.pantallas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 3vw, 36px); margin: 0; max-width: 1120px; }
 .pantallas figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
 .pantallas img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); display: block; aspect-ratio: 420 / 933; }
 .pantallas figcaption { font-size: 0.9rem; color: var(--muted); }
@@ -197,7 +197,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
   .hero-grid, .tecnica, .dos { grid-template-columns: minmax(0, 1fr); }
   .etapas { grid-template-columns: minmax(0, 1fr); }
   .hecho { grid-template-columns: minmax(0, 1fr); }
-  .pantallas { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .pantallas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .pantallas figcaption { font-size: 0.8rem; }
   .hero .contours { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%); mask-image: linear-gradient(to bottom, transparent 0%, #000 55%); }
 }
@@ -293,6 +293,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <p class="lede">Capturas del club de demostración. Los nombres y los datos son inventados.</p>
       </div>
       <div class="pantallas">
+        <figure><img src="assets/app-login.webp" width="420" height="933" alt="Pantalla de ingreso de la app: logo del Club Andino Río Cuarto sobre una foto de montañas, campos de correo y contraseña y botón para ingresar con Google" loading="lazy"><figcaption>Ingreso: con correo y contraseña, o con Google.</figcaption></figure>
         <figure><img src="assets/app-inicio.webp" width="420" height="933" alt="Pantalla de inicio de la app: saludo, estado de cuota, accesos y novedades del club" loading="lazy"><figcaption>Inicio del socio: estado de cuota, accesos y novedades.</figcaption></figure>
         <figure><img src="assets/app-cuotas.webp" width="420" height="933" alt="Pantalla de cuotas: deuda de una cuota social, precio mensual y botón para pagar con Mercado Pago" loading="lazy"><figcaption>Cuotas: lo que se debe y el pago con Mercado Pago.</figcaption></figure>
         <figure><img src="assets/app-cobro.webp" width="420" height="933" alt="Pantalla de secretaría para registrar un cobro de cuatro meses adeudados" loading="lazy"><figcaption>Secretaría: registrar un cobro de varios meses.</figcaption></figure>
