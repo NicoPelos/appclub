@@ -119,6 +119,19 @@ img.carc { display: block; width: 96px; height: 96px; margin-bottom: 18px; }
 .modulos-lista li.con-mini.ancho { grid-template-columns: 150px minmax(0, 1fr); }
 .modulos-lista img.mini.ancho { width: 150px; }
 @media (max-width: 640px) { .modulos-lista li.con-mini.ancho { grid-template-columns: 110px minmax(0, 1fr); } .modulos-lista img.mini.ancho { width: 110px; } }
+dialog.visor { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100%; height: 100%; margin: 0; overflow: hidden; }
+dialog.visor::backdrop { background: rgba(6, 16, 20, .86); backdrop-filter: blur(3px); }
+dialog.visor[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 16px; animation: visor-in .18s ease-out; }
+.visor-marco { position: relative; max-width: min(92vw, 1100px); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.visor img { display: block; max-width: 100%; max-height: 78vh; width: auto; height: auto; border-radius: 12px; background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+.visor-pie { margin: 0; color: #EAF2F3; font-size: .95rem; text-align: center; max-width: 60ch; }
+.visor-x { position: absolute; top: -14px; right: -14px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #EAF2F3; color: #0F2229; font-size: 1.6rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.4); }
+.visor-x:focus-visible { outline: 3px solid #7FE0CB; outline-offset: 2px; }
+.mini-link { cursor: zoom-in; }
+body.visor-abierto { overflow: hidden; }
+@keyframes visor-in { from { opacity: 0; transform: scale(.98); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { dialog.visor[open] { animation: none; } }
+@media (max-width: 640px) { .visor-x { top: -10px; right: -6px; } }
 .pie-carc { display: inline-flex; align-items: center; gap: 10px; }
 .pie-carc img { border-radius: 50%; }
 
@@ -519,6 +532,48 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     <span class="pie-carc"><img src="assets/carc-logo.webp" alt="" width="28" height="28" loading="lazy">Creada para el Club Andino Río Cuarto</span>
   </footer>
 </div>
+
+<dialog class="visor" id="visor" aria-label="Imagen ampliada">
+  <div class="visor-marco">
+    <button type="button" class="visor-x" id="visor-x" aria-label="Cerrar imagen">×</button>
+    <img id="visor-img" alt="">
+    <p class="visor-pie" id="visor-pie"></p>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('visor');
+  if (!dlg || typeof dlg.showModal !== 'function') return; // sin <dialog>: el enlace abre la imagen en otra pestaña
+  var img = document.getElementById('visor-img');
+  var pie = document.getElementById('visor-pie');
+  var cerrar = document.getElementById('visor-x');
+  var origen = null;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a.mini-link') : null;
+    if (!a) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; // dejar que abran en pestaña nueva
+    e.preventDefault();
+    var mini = a.querySelector('img');
+    var li = a.closest('li');
+    var titulo = li && li.querySelector('h4') ? li.querySelector('h4').textContent : '';
+    img.src = a.getAttribute('href');
+    img.alt = mini ? mini.alt : '';
+    pie.textContent = titulo;
+    origen = a;
+    document.body.classList.add('visor-abierto');
+    dlg.showModal();
+    cerrar.focus();
+  });
+  cerrar.addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('visor-marco')) dlg.close(); });
+  dlg.addEventListener('close', function () {
+    document.body.classList.remove('visor-abierto');
+    img.removeAttribute('src');
+    if (origen) { origen.focus(); origen = null; }
+  });
+})();
+</script>
 
 <script>
 (function () {
