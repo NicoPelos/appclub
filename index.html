@@ -478,6 +478,66 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
           <li>Harness engineering</li><li>CLAUDE.md</li><li>AGENTS.md</li><li>Hooks</li><li>Permisos</li><li>GitHub Actions</li><li>Spec-driven development</li><li>Mutation testing</li>
         </ul>
       </div>
+      <figure class="diagrama" style="margin-bottom:clamp(24px,4vw,40px)">
+        <svg viewBox="0 0 980 440" role="img" aria-labelledby="dh-t dh-d">
+          <title id="dh-t">El harness de appClub</title>
+          <desc id="dh-d">Un asistente de IA recibe contexto: archivos CLAUDE.md y AGENTS.md, especificaciones y contratos, y un issue. Mientras trabaja, un hook y una lista de permisos limitan lo que puede hacer. Su cambio pasa a un pull request con CI, mutation testing y mi revisión, y recién entonces se integra a main. Una vez por semana, una revisión automática con Claude en GitHub Actions lee el código y abre issues nuevos, que vuelven a empezar el circuito.</desc>
+          <defs>
+            <marker id="ph" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker>
+          </defs>
+          <text x="20" y="34" class="cap">CONTEXTO</text>
+          <rect class="caja" x="20" y="50" width="200" height="74" rx="4"/>
+          <text x="36" y="80">CLAUDE.md · AGENTS.md</text><text x="36" y="100" class="sub">reglas de los cuatro repos</text>
+          <rect class="caja" x="20" y="144" width="200" height="74" rx="4"/>
+          <text x="36" y="174">Especificaciones</text><text x="36" y="194" class="sub">y contratos antes del código</text>
+          <rect class="caja" x="20" y="238" width="200" height="74" rx="4"/>
+          <text x="36" y="268">Issue</text><text x="36" y="288" class="sub">qué se quiere y por qué</text>
+          <text x="260" y="34" class="cap">ASISTENTE</text>
+          <rect class="caja fuerte" x="260" y="130" width="150" height="110" rx="4"/>
+          <text x="276" y="166">Asistente de IA</text>
+          <text x="276" y="188" class="sub">Claude Code</text>
+          <text x="276" y="206" class="sub">propone y escribe</text>
+          <path class="flecha" d="M220 87 L260 160" marker-end="url(#ph)"/>
+          <path class="flecha" d="M220 181 L260 185" marker-end="url(#ph)"/>
+          <path class="flecha" d="M220 275 L260 210" marker-end="url(#ph)"/>
+          <rect class="zona" x="450" y="22" width="250" height="278" rx="8"/>
+          <text x="466" y="46" class="cap">LÍMITES MIENTRAS TRABAJA</text>
+          <rect class="caja" x="466" y="64" width="218" height="112" rx="4"/>
+          <text x="482" y="90">Hook PreToolUse</text>
+          <text x="482" y="110" class="sub">bloquea .env y force push</text>
+          <text x="482" y="128" class="sub">frena builds en la Raspi</text>
+          <text x="482" y="146" class="sub">confirma escrituras en prod.</text>
+          <text x="482" y="164" class="sub">49 pruebas propias</text>
+          <rect class="caja" x="466" y="196" width="218" height="86" rx="4"/>
+          <text x="482" y="222">Permisos</text>
+          <text x="482" y="242" class="sub">comandos permitidos por lista</text>
+          <text x="482" y="260" class="sub">producción: leer sí, escribir no</text>
+          <path class="flecha" d="M410 185 L450 185 L466 120" marker-end="url(#ph)"/>
+          <text x="740" y="34" class="cap">VERIFICACIÓN</text>
+          <rect class="caja" x="740" y="50" width="220" height="86" rx="4"/>
+          <text x="756" y="76">Pull request + CI</text>
+          <text x="756" y="96" class="sub">tests unitarios e integración</text>
+          <text x="756" y="114" class="sub">prueba del gateway</text>
+          <rect class="caja" x="740" y="156" width="220" height="64" rx="4"/>
+          <text x="756" y="182">Mutation testing</text>
+          <text x="756" y="202" class="sub">detecta el 94,9 % de roturas</text>
+          <rect class="caja fuerte" x="740" y="240" width="220" height="64" rx="4"/>
+          <text x="756" y="266">Revisión mía</text>
+          <text x="756" y="286" class="sub">antes de integrar</text>
+          <rect class="caja" x="740" y="324" width="220" height="44" rx="4"/>
+          <text x="756" y="351">Integrado a main</text>
+          <path class="flecha" d="M700 160 L740 93" marker-end="url(#ph)"/>
+          <path class="flecha" d="M850 136 L850 156" marker-end="url(#ph)"/>
+          <path class="flecha" d="M850 220 L850 240" marker-end="url(#ph)"/>
+          <path class="flecha" d="M850 304 L850 324" marker-end="url(#ph)"/>
+          <text x="260" y="352" class="cap">CONTROL CONTINUO</text>
+          <rect class="caja" x="260" y="360" width="440" height="64" rx="4"/>
+          <text x="276" y="386">Revisión semanal con Claude</text>
+          <text x="276" y="406" class="sub">GitHub Actions · un módulo por vez, solo lectura · abre un issue por hallazgo</text>
+          <path class="flecha" d="M850 368 L850 392 L700 392" marker-end="url(#ph)"/>
+          <path class="flecha" d="M260 392 L120 392 L120 312" stroke-dasharray="4 4" marker-end="url(#ph)"/>
+        </svg>
+      </figure>
       <ul class="hechos">
         <li class="hecho"><h3>Archivos de contexto</h3><p>Los cuatro repositorios tienen su <code>CLAUDE.md</code>, hay un mapa general que los conecta y la app suma un <code>AGENTS.md</code>. El asistente los lee al empezar cada sesión: estructura, comandos y reglas como “toda consulta filtra por club” o “no borrar código sin uso sin verificarlo”.</p><a href="https://github.com/NicoPelos/appclub/blob/main/ejemplos/harness/CLAUDE.backend.md" target="_blank" rel="noopener">Leer uno</a></li>
         <li class="hecho"><h3>Hooks que frenan lo peligroso</h3><p>Un hook corre antes de cada acción del asistente y bloquea editar archivos con secretos, hacer force push a <code>main</code>, compilar en la Raspberry Pi y escribir en la base de producción sin confirmar. Tiene 49 pruebas propias.</p><a href="https://github.com/NicoPelos/appclub/tree/main/ejemplos/harness/hooks" target="_blank" rel="noopener">Ver el hook</a></li>
