@@ -17,6 +17,7 @@ La marca appClub es la de la **plataforma**: pantalla de carga, "Powered by", pa
 | `lockup.svg`, `lockup-oscuro.svg`, `lockup-mono.svg` | Ícono + wordmark en horizontal. |
 | `favicon.svg` | Ícono que cambia solo con el tema del sistema (`prefers-color-scheme`). |
 | `tokens.css` | Colores de la web y los paneles, en tema claro y oscuro, con sus contrastes. |
+| `animacion/` | Animación A → C para la web, la app y los videos (ver Animación). |
 | `png/` | PNG para los usos que no aceptan SVG (ver abajo). |
 | `fuentes/` | Manrope 500 y 800 (licencia OFL, en `fuentes/OFL.txt`). Solo las usa el generador. |
 
@@ -40,7 +41,51 @@ El wordmark usa **Manrope** (500 y 800), convertida a trazos: los SVG no depende
 
 - **Zona de respeto**: alrededor del ícono o del lockup, dejar libre al menos **un cuarto del lado del ícono** (30 sobre 120). Nada de texto ni bordes ahí.
 - **Tamaño mínimo**: ícono de **16 px** (favicon; a ese tamaño el punto casi no se ve, y está bien) y lockup de **24 px de alto**. Debajo de 24 px, usar solo el ícono.
-- No estirar, no rotar (salvo la animación A → C, ver issue #3), no cambiar los colores fuera de las variantes de esta carpeta, no ponerle sombra ni contorno.
+- No estirar, no rotar (salvo la animación A → C, ver Animación), no cambiar los colores fuera de las variantes de esta carpeta, no ponerle sombra ni contorno.
+
+## Animación A → C
+
+El dibujo arranca girado 90° en sentido horario, como una **A** con travesaño, junto a la palabra **app**. Gira a la **C** en sentido antihorario mientras la palabra se completa a **appClub**. El cuadrado no gira: solo el dibujo.
+
+| Tramo del ciclo (3,6 s) | Qué pasa |
+|---|---|
+| 0–35 % | Quieto en A, con el travesaño y "app" |
+| 35–65 % | Gira a C con `ease-in-out`. El travesaño se desvanece hasta el 50 %, el punto aparece entre el 50 y el 65 %, y "Club" se descubre de izquierda a derecha |
+| 65–100 % | Quieto en C con "appClub" |
+
+**Cuándo usar cada modo**
+
+- **Una vez** (`appclub-una-vez.svg`, `modo="una-vez"`): splash al abrir y cierre de video. Hace A → C y se queda en C.
+- **Loop** (`appclub-loop.svg`, `modo="loop"`): mientras se espera algo (cargar la sesión, la configuración del club, un pago). Va y vuelve sin parar.
+- Para un spinner muy chico, menos de 32 px de alto, el wordmark no se lee: usar solo el ícono estático, o el loop recortado al ícono.
+
+**Archivos** (en `animacion/`)
+
+| Archivo | Para qué |
+|---|---|
+| `appclub-una-vez.svg`, `appclub-loop.svg` | Web, PWA y paneles. Funcionan como `<img>` o inline, y siguen el tema claro u oscuro del sistema. |
+| `AppClubAnimacion.tsx` + `trazos.ts` | App móvil (Expo). Copiar los dos archivos. Usa `react-native-svg`, Reanimated 4 y `react-native-worklets`; compila con las versiones de la app (React Native 0.85, Reanimated 4.3). |
+| `video/appclub-una-vez-claro.mp4` / `.webm`, `-oscuro` | Video 1080×1080, 30 fps, 4,6 s (la animación y un segundo quieto en C). Base para los videos del issue #8. |
+| `demo.html` | Las dos versiones en claro y oscuro, para revisarlas. |
+
+**Accesibilidad**
+
+- Con **reducir movimiento** activado (`prefers-reduced-motion` en la web, la misma opción del teléfono en la app) queda quieta en C con "appClub".
+- Sin destellos ni cambios de brillo: solo giro, opacidad y un desplazamiento corto.
+- Como indicador de carga en la web: el `<img>` con `alt="Cargando"` dentro de un contenedor con `role="status"` y `aria-busy="true"`. En la app: `<AppClubAnimacion modo="loop" cargando />`, que se anuncia como "Cargando".
+
+```html
+<div role="status" aria-busy="true"><img src="appclub-loop.svg" alt="Cargando" height="40"></div>
+```
+
+```tsx
+<AppClubAnimacion modo="una-vez" alto={56} onFin={() => setListo(true)} />
+<AppClubAnimacion modo="loop" alto={40} tema="oscuro" cargando />
+```
+
+Diferencias con el prototipo del issue #3: gira solo el dibujo, porque el cuadrado girado se salía del recuadro a 45°; "Club" entra desplazado 6 unidades sobre 120 de alto en vez de 14 px, porque a esta escala se encimaba con "app"; y la A tiene travesaño.
+
+Los SVG, `trazos.ts` y `demo.html` los genera `generar.py`, con la lógica en `animacion.py`. El componente y el video no se generan: si cambia la geometría, el componente se actualiza solo con `trazos.ts`, y el video se vuelve a renderizar desde `demo.html`.
 
 ## PNG
 
