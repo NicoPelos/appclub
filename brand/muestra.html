@@ -1,0 +1,32 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Muestra de marca appClub</title><link rel="stylesheet" href="tokens.css">
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#ddd;color:#1E1B4B}
+.par{display:grid;grid-template-columns:1fr 1fr}
+.panel{padding:28px 32px}.claro{background:#F6F7FB;color:#1E1B4B}.oscuro{background:#14122E;color:#EEF2FF}
+h1{margin:0;padding:24px 32px;background:#fff;font-size:22px} h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin:26px 0 12px}
+.fila{display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap} .t{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;opacity:.85}
+.mono-a{color:#1E1B4B} .mono-b{color:#EEF2FF} .mono-c{color:#4338CA}
+.ops{display:flex;gap:32px;flex-wrap:wrap} .op{max-width:220px;font-size:13px} .op b{display:block;margin:10px 0 4px}
+.tab{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px 8px 0 0;font-size:13px}
+</style></head><body>
+<h1>appClub · muestra de marca (brand/)</h1>
+<div class="par">
+<section class="panel claro"><h2>Ícono · tema claro</h2><div class="fila"><img src="icono.svg" width="120" alt="Ícono"><img src="icono-sin-fondo.svg" width="120" alt="Ícono sin fondo"><span class="mono-a"><svg width="120" height="120" viewBox="0 0 120 120"><title>appClub</title><defs><mask id="m1" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M80 38 H48 A12 12 0 0 0 36 50 V70 A12 12 0 0 0 48 82 H80" fill="none" stroke="#000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="76" cy="60" r="6.5" fill="#000"/></mask></defs><rect width="120" height="120" rx="28" fill="currentColor" mask="url(#m1)"/></svg></span></div>
+<h2>Tamaños chicos</h2><div class="fila"><div class="t"><img src="icono.svg" width="16" height="16" alt=""><span>16px</span></div><div class="t"><img src="icono.svg" width="24" height="24" alt=""><span>24px</span></div><div class="t"><img src="icono.svg" width="32" height="32" alt=""><span>32px</span></div><div class="t"><img src="icono.svg" width="48" height="48" alt=""><span>48px</span></div><div class="t"><img src="icono.svg" width="64" height="64" alt=""><span>64px</span></div></div>
+<h2>Wordmark</h2><img src="wordmark.svg" height="64" alt="Wordmark">
+<h2>Lockup</h2><img src="lockup.svg" height="72" alt="Lockup"><br><br><img src="lockup.svg" height="32" alt="Lockup chico"> <img src="lockup.svg" height="24" alt="Lockup 24px">
+<h2>Pestaña del navegador</h2><span class="tab" style="background:#fff;border:1px solid #D9DCEB"><img src="favicon.svg" width="16" alt="">appClub</span>
+</section>
+<section class="panel oscuro"><h2>Ícono · tema oscuro</h2><div class="fila"><img src="icono-oscuro.svg" width="120" alt="Ícono oscuro"><img src="icono-sin-fondo-oscuro.svg" width="120" alt="Ícono sin fondo oscuro"><img src="icono.svg" width="120" alt="Ícono claro sobre oscuro" style="opacity:1"></div>
+<p style="font-size:12px;opacity:.75;margin:8px 0 0">El tercero es el ícono de color sobre fondo oscuro (2,3:1): por eso existe la variante oscura.</p>
+<h2>Tamaños chicos</h2><div class="fila"><div class="t"><img src="icono-oscuro.svg" width="16" height="16" alt=""><span>16px</span></div><div class="t"><img src="icono-oscuro.svg" width="24" height="24" alt=""><span>24px</span></div><div class="t"><img src="icono-oscuro.svg" width="32" height="32" alt=""><span>32px</span></div><div class="t"><img src="icono-oscuro.svg" width="48" height="48" alt=""><span>48px</span></div><div class="t"><img src="icono-oscuro.svg" width="64" height="64" alt=""><span>64px</span></div></div>
+<h2>Wordmark</h2><img src="wordmark-oscuro.svg" height="64" alt="Wordmark oscuro">
+<h2>Lockup</h2><img src="lockup-oscuro.svg" height="72" alt="Lockup oscuro"><br><br><img src="lockup-oscuro.svg" height="32" alt=""> <img src="lockup-oscuro.svg" height="24" alt="">
+<h2>Pestaña del navegador</h2><span class="tab" style="background:#202124;color:#e8eaed"><img src="icono-oscuro.svg" width="16" alt="">appClub</span>
+</section></div>
+<section class="panel claro"><h2>Monocromo (toma el color del texto)</h2><div class="fila">
+<span class="mono-a"><img src="lockup-mono.svg" height="56" alt="" style="filter:none"></span>
+</div><p style="font-size:12px;opacity:.75">Las versiones mono usan currentColor: se ven del color del texto cuando se insertan inline en el HTML; como imagen salen negras.</p>
+<h2>Posición A (girada 90°) · decisión abierta</h2><div class="ops"><div class="op"><svg viewBox="0 0 120 120" width="120" height="120"><rect width="120" height="120" rx="28" fill="#4338CA"/><g transform="rotate(90 60 60)"><path d="M80 38 H48 A12 12 0 0 0 36 50 V70 A12 12 0 0 0 48 82 H80" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="76" cy="60" r="6.5" fill="#FDE68A"/></g></svg><b>1 · Como está</b>El punto queda abajo, entre las patas.</div><div class="op"><svg viewBox="0 0 120 120" width="120" height="120"><rect width="120" height="120" rx="28" fill="#4338CA"/><g transform="rotate(90 60 60)"><path d="M80 38 H48 A12 12 0 0 0 36 50 V70 A12 12 0 0 0 48 82 H80" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="62" cy="60" r="6.5" fill="#FDE68A"/></g></svg><b>2 · Punto como travesaño</b>El punto sube al lugar del travesaño. En C queda más cerca del trazo vertical.</div><div class="op"><svg viewBox="0 0 120 120" width="120" height="120"><rect width="120" height="120" rx="28" fill="#4338CA"/><g transform="rotate(90 60 60)"><path d="M80 38 H48 A12 12 0 0 0 36 50 V70 A12 12 0 0 0 48 82 H80" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 50 V70" stroke="#fff" stroke-width="10" stroke-linecap="round"/></g></svg><b>3 · Travesaño corto</b>Una barra corta solo en la posición A; en el giro se desvanece y aparece el punto.</div></div>
+</section></body></html>

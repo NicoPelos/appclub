@@ -1,0 +1,61 @@
+/*
+ * Tokens de color de appClub. Los mismos en la web, el panel de staff y el de
+ * superadmin. Por defecto siguen el tema del sistema; un data-theme="light" o
+ * "dark" en <html> fuerza uno (los paneles lo guardan desde el menú del usuario).
+ *
+ * Contrastes medidos (WCAG; texto pide 4,5:1, bordes de controles 3:1):
+ *   claro  texto 14,9 · suave 7,1 · acento 7,4 · blanco sobre acento 7,9 · borde de control 3,1
+ *   oscuro texto 16,2 · suave 9,1 · acento 6,1 (5,4 sobre superficie) · amarillo 14,6 · borde de control 3,6
+ * Dos trampas: el índigo de marca (#4338CA) como texto sobre el fondo oscuro da 2,3:1,
+ * y el amarillo como texto sobre fondo claro da 1,2:1. Por eso el acento cambia de
+ * tono entre temas y el amarillo, de rol.
+ */
+:root {
+  --brand-indigo: #4338CA;
+  --brand-amarillo: #FDE68A;
+
+  --color-fondo: #F6F7FB;
+  --color-superficie: #FFFFFF;
+  --color-texto: #1E1B4B;
+  --color-texto-suave: #4B5563;
+  --color-acento: #4338CA;          /* enlaces y botones */
+  --color-acento-hover: #3730A3;
+  --color-sobre-acento: #FFFFFF;    /* texto encima de un botón */
+  --color-resalte: #FDE68A;         /* solo fondos y decoración, con --color-texto encima */
+  --color-linea: #D9DCEB;           /* divisores, decorativo */
+  --color-borde-control: #8B90B8;   /* bordes de campos y botones secundarios */
+  --color-foco: #4338CA;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-fondo: #14122E;
+    --color-superficie: #1E1B4B;
+    --color-texto: #EEF2FF;
+    --color-texto-suave: #A5B4FC;
+    --color-acento: #818CF8;
+    --color-acento-hover: #A5B4FC;
+    --color-sobre-acento: #14122E;
+    --color-resalte: #FDE68A;       /* en oscuro sirve también como texto */
+    --color-linea: #312E81;
+    --color-borde-control: #6366F1;
+    --color-foco: #A5B4FC;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-fondo: #14122E;
+  --color-superficie: #1E1B4B;
+  --color-texto: #EEF2FF;
+  --color-texto-suave: #A5B4FC;
+  --color-acento: #818CF8;
+  --color-acento-hover: #A5B4FC;
+  --color-sobre-acento: #14122E;
+  --color-resalte: #FDE68A;
+  --color-linea: #312E81;
+  --color-borde-control: #6366F1;
+  --color-foco: #A5B4FC;
+  color-scheme: dark;
+}
