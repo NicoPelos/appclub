@@ -98,8 +98,10 @@ class Texto:
         escala = tamano / self.upm
         x = x0
         salida = []
+        self.inicios = []  # x donde arranca cada parte (para la animación)
         caja = [float('inf'), float('inf'), float('-inf'), float('-inf')]
         for palabra, peso in PARTES:
+            self.inicios.append(x)
             tt, hbfont = self.fuentes[peso]
             buf = hb.Buffer()
             buf.add_str(palabra)
@@ -192,6 +194,20 @@ def main():
         f'<path fill="currentColor" d="{redondear(d)}"/>' for d, _ in partes_l
     )
     archivos['lockup-mono.svg'] = svg(f'0 0 {ancho:.1f} {LADO}', cuerpo, 'appClub')
+
+    # Animación A → C (issue #3): mismos trazos que el lockup
+    from animacion import generar_animacion
+    archivos.update(generar_animacion(
+        partes=[(redondear(d), peso) for d, peso in partes_l],
+        inicio_club=texto.inicios[1],
+        ancho=ancho,
+        geo=dict(lado=LADO, radio=RADIO, trazo=TRAZO, c_path=C_PATH, punto=PUNTO),
+        colores=dict(
+            claro=dict(cuadrado=INDIGO, c=BLANCO, punto=AMARILLO, app=INDIGO, club=INDIGO_TINTA, fondo='#F6F7FB'),
+            oscuro=dict(cuadrado=INDIGO_CLARO, c=NOCHE, punto=AMARILLO, app=LAVANDA, club=NIEBLA, fondo=NOCHE),
+        ),
+    ))
+    (AQUI / 'animacion').mkdir(exist_ok=True)
 
     for nombre, contenido in archivos.items():
         (AQUI / nombre).write_text(contenido, encoding='utf-8')
