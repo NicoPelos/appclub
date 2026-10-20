@@ -1,0 +1,122 @@
+{
+  "issue": "appcarc-backend#341",
+  "etiqueta": "Cobros en secretaría",
+  "voz": "341-cobro.mp3",
+  "portada_s": 8.5,
+  "guion": "Cuando un socio se acerca a pagar, la secretaría tiene todo en el celular. Busca al socio por nombre o por DNI y, en su ficha, ve al instante cuántos meses debe y cuánto suma. Elige los meses que el socio va a pagar y app club calcula el monto solo, sin cuentas a mano. Confirma el cobro y listo: queda registrado en la caja del club, con el detalle de cada cuota. Sin planillas y sin cuadernos. Más info en app club punto net punto ar.",
+  "tramos": [
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 2.0,
+      "fin": 5.0,
+      "dur": 2.6,
+      "texto": "La secretaría del club, en el celular"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 5.5,
+      "fin": 6.4,
+      "dur": 1.2,
+      "texto": "La secretaría del club, en el celular"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 63.0,
+      "fin": 80.0,
+      "dur": 3.6,
+      "texto": "Busca al socio por nombre o DNI"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 80.0,
+      "fin": 87.2,
+      "dur": 3.2,
+      "texto": "Ve al instante cuántos meses debe y cuánto suma"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 91.5,
+      "fin": 104.0,
+      "dur": 5.7,
+      "texto": "Elige los meses que paga y el monto se calcula solo"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 104.0,
+      "fin": 107.8,
+      "dur": 1.9,
+      "texto": "Confirma el cobro"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 118.9,
+      "fin": 121.0,
+      "dur": 1.8,
+      "texto": "Y queda registrado en la caja, con el detalle de cada cuota"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 123.3,
+      "fin": 125.6,
+      "dur": 1.85,
+      "texto": "Y queda registrado en la caja, con el detalle de cada cuota"
+    },
+    {
+      "tipo": "placa",
+      "dur": 2.45,
+      "lineas": [
+        "Sin planillas.",
+        "Sin cuadernos."
+      ]
+    },
+    {
+      "tipo": "cierre",
+      "dur": 6.0
+    }
+  ],
+  "subtitulos": [
+    [
+      "00:00.000",
+      "00:03.800",
+      "Cuando un socio se acerca a pagar, la secretaría tiene todo en el celular."
+    ],
+    [
+      "00:04.200",
+      "00:06.600",
+      "Busca al socio por nombre o por DNI"
+    ],
+    [
+      "00:06.600",
+      "00:10.400",
+      "y, en su ficha, ve al instante cuántos meses debe y cuánto suma."
+    ],
+    [
+      "00:10.900",
+      "00:16.100",
+      "Elige los meses que el socio va a pagar y app club calcula el monto solo, sin cuentas a mano."
+    ],
+    [
+      "00:16.500",
+      "00:22.100",
+      "Confirma el cobro y listo: queda registrado en la caja del club, con el detalle de cada cuota."
+    ],
+    [
+      "00:22.100",
+      "00:23.900",
+      "Sin planillas y sin cuadernos."
+    ],
+    [
+      "00:24.300",
+      "00:27.100",
+      "Más info en appclub.net.ar"
+    ]
+  ]
+}

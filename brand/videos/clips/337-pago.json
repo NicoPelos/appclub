@@ -1,0 +1,110 @@
+{
+  "issue": "appcarc-backend#337",
+  "etiqueta": "Pagos desde el celular",
+  "voz": "337-pago.mp3",
+  "portada_s": 10,
+  "guion": "Con app club, cada socio lleva su club en el celular. Apenas entra, ve si tiene la cuota al día o si debe algo. En \"Deudas y pagos\" aparece todo lo pendiente: la cuota social, la escuelita de escalada y hasta la remera del club. El socio elige qué quiere pagar y lo paga todo junto, en un solo paso, con Mercado Pago. Sin pasar por la secretaría, sin transferencias sueltas y sin mandar comprobantes: el pago queda registrado en el club. Más info en app club punto net punto ar.",
+  "tramos": [
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 2.0,
+      "fin": 5.0,
+      "dur": 2.3,
+      "texto": "El club, en el celular de cada socio"
+    },
+    {
+      "tipo": "src",
+      "archivo": "341-cobro.mp4",
+      "ini": 5.5,
+      "fin": 6.4,
+      "dur": 0.8,
+      "texto": "El club, en el celular de cada socio"
+    },
+    {
+      "tipo": "src",
+      "archivo": "338-pago.mp4",
+      "ini": 50.0,
+      "fin": 53.5,
+      "dur": 3.7,
+      "texto": "Apenas entra, ve si está al día"
+    },
+    {
+      "tipo": "src",
+      "archivo": "338-pago.mp4",
+      "ini": 54.6,
+      "fin": 61.0,
+      "dur": 7.1,
+      "texto": "Ve todo lo pendiente: la cuota, la escuelita y hasta la remera del club"
+    },
+    {
+      "tipo": "src",
+      "archivo": "338-pago.mp4",
+      "ini": 61.0,
+      "fin": 68.0,
+      "dur": 3.1,
+      "texto": "Elige qué quiere pagar"
+    },
+    {
+      "tipo": "src",
+      "archivo": "338-pago.mp4",
+      "ini": 68.0,
+      "fin": 69.3,
+      "dur": 1.3,
+      "texto": "Y lo paga todo junto con Mercado Pago"
+    },
+    {
+      "tipo": "src",
+      "archivo": "338-pago.mp4",
+      "ini": 76.2,
+      "fin": 77.2,
+      "dur": 1.0,
+      "texto": "Y lo paga todo junto con Mercado Pago"
+    },
+    {
+      "tipo": "placa",
+      "dur": 7.2,
+      "lineas": [
+        "Sin pasar por la secretaría.",
+        "Sin transferencias sueltas.",
+        "Sin mandar comprobantes."
+      ]
+    },
+    {
+      "tipo": "cierre",
+      "dur": 4.8
+    }
+  ],
+  "subtitulos": [
+    [
+      "00:00.000",
+      "00:03.100",
+      "Con app club, cada socio lleva su club en el celular."
+    ],
+    [
+      "00:03.100",
+      "00:06.600",
+      "Apenas entra, ve si tiene la cuota al día o si debe algo."
+    ],
+    [
+      "00:06.900",
+      "00:13.600",
+      "En «Deudas y pagos» aparece todo lo pendiente: la cuota social, la escuelita de escalada y hasta la remera del club."
+    ],
+    [
+      "00:14.000",
+      "00:19.250",
+      "El socio elige qué quiere pagar y lo paga todo junto, en un solo paso, con Mercado Pago."
+    ],
+    [
+      "00:19.250",
+      "00:26.300",
+      "Sin pasar por la secretaría, sin transferencias sueltas y sin mandar comprobantes: el pago queda registrado en el club."
+    ],
+    [
+      "00:26.700",
+      "00:29.500",
+      "Más info en appclub.net.ar"
+    ]
+  ]
+}
