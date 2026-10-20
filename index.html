@@ -205,6 +205,12 @@ section.s { padding-block: clamp(44px, 7vw, 88px); border-top: 1px solid var(--l
 .pantallas figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
 .pantallas img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); display: block; aspect-ratio: 420 / 933; }
 .pantallas figcaption { font-size: 0.9rem; color: var(--muted); }
+.videos-titulo { margin: clamp(36px, 5vw, 56px) 0 18px; font-size: 1.3rem; }
+.videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 3vw, 36px); }
+.videos figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.videos video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 14px; border: 1px solid var(--line); background: #14122E; }
+.videos figcaption { font-size: 0.9rem; color: var(--muted); }
+@media (max-width: 860px) { .videos { grid-template-columns: minmax(0, 1fr); } }
 
 /* técnica */
 .diagrama { border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 14px; overflow-x: auto; margin: 0; }
@@ -363,6 +369,25 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <figure><img src="assets/app-inicio.webp" width="420" height="933" alt="Pantalla de inicio de la app: saludo, estado de cuota, accesos y novedades del club" loading="lazy"><figcaption>Inicio del socio: estado de cuota, accesos y novedades.</figcaption></figure>
         <figure><img src="assets/app-cuotas.webp" width="420" height="933" alt="Pantalla de cuotas: deuda de una cuota social, precio mensual y botón para pagar con Mercado Pago" loading="lazy"><figcaption>Cuotas: lo que se debe y el pago con Mercado Pago.</figcaption></figure>
         <figure><img src="assets/app-cobro.webp" width="420" height="933" alt="Pantalla de secretaría para registrar un cobro de cuatro meses adeudados" loading="lazy"><figcaption>Secretaría: registrar un cobro de varios meses.</figcaption></figure>
+      </div>
+      <h3 class="videos-titulo">En video</h3>
+      <div class="videos">
+        <figure>
+          <video controls preload="none" playsinline width="1280" height="720" poster="assets/videos/pago-portada.webp" aria-describedby="v-pago">
+            <source src="assets/videos/pago.mp4" type="video/mp4">
+            <source src="assets/videos/pago.webm" type="video/webm">
+            <track kind="captions" srclang="es" label="Español" src="assets/videos/pago.vtt">
+          </video>
+          <figcaption id="v-pago">Pagos desde el celular: el socio ve lo que debe, elige qué pagar y lo paga todo junto con Mercado Pago. 31 segundos, con narración y subtítulos.</figcaption>
+        </figure>
+        <figure>
+          <video controls preload="none" playsinline width="1280" height="720" poster="assets/videos/cobro-portada.webp" aria-describedby="v-cobro">
+            <source src="assets/videos/cobro.mp4" type="video/mp4">
+            <source src="assets/videos/cobro.webm" type="video/webm">
+            <track kind="captions" srclang="es" label="Español" src="assets/videos/cobro.vtt">
+          </video>
+          <figcaption id="v-cobro">Cobros en secretaría: buscar al socio, ver cuánto debe, cobrar varios meses y que quede en la caja. 30 segundos, con narración y subtítulos.</figcaption>
+        </figure>
       </div>
       <div class="actions" style="margin-top:28px"><a class="btn btn-primary" href="https://app.appclub.net.ar/demo/" target="_blank" rel="noopener">Probar la demo</a></div>
     </section>
