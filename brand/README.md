@@ -18,6 +18,7 @@ La marca appClub es la de la **plataforma**: pantalla de carga, "Powered by", pa
 | `favicon.svg` | Ícono que cambia solo con el tema del sistema (`prefers-color-scheme`). |
 | `tokens.css` | Colores de la web y los paneles, en tema claro y oscuro, con sus contrastes. |
 | `animacion/` | Animación A → C para la web, la app y los videos (ver Animación). |
+| `videos/` | Editor y guía de estilo de los videos de la app (ver `videos/README.md`). |
 | `png/` | PNG para los usos que no aceptan SVG (ver abajo). |
 | `fuentes/` | Manrope 500 y 800 (licencia OFL, en `fuentes/OFL.txt`). Solo las usa el generador. |
 
