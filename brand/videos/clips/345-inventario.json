@@ -1,0 +1,119 @@
+{
+  "issue": "appcarc-backend#345",
+  "etiqueta": "Inventario con IA",
+  "voz": "345-inventario.mp3",
+  "portada_s": 16.5,
+  "guion": "¿Cuánto equipo tiene el club y dónde está? App club usa inteligencia artificial para que armes el inventario desde el celular. Entrás a Inventario y cargás un ítem nuevo. Le sacás una foto al objeto o la elegís de la galería. La inteligencia artificial la mira y te propone el nombre, la categoría y una descripción. Vos revisás, corregís lo que haga falta y guardás: la sugerencia es automática, pero decide una persona. El ítem queda registrado con sus fotos, a mano de todo el staff. Más info en app club punto net punto ar.",
+  "tramos": [
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 5.75,
+      "fin": 6.95,
+      "dur": 2.45,
+      "texto": "¿Cuánto equipo tiene el club y dónde está?"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 34.0,
+      "fin": 39.6,
+      "dur": 4.55,
+      "texto": "La IA te ayuda a armar el inventario"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 39.6,
+      "fin": 43.6,
+      "dur": 2.72,
+      "texto": "Cargás un ítem nuevo"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 43.6,
+      "fin": 46.0,
+      "dur": 1.6,
+      "texto": "Le sacás una foto o la elegís de la galería"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 51.84,
+      "fin": 53.0,
+      "dur": 1.35,
+      "texto": "Le sacás una foto o la elegís de la galería"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 56.6,
+      "fin": 63.5,
+      "dur": 5.06,
+      "texto": "La IA propone nombre, categoría y descripción"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 63.5,
+      "fin": 80.6,
+      "dur": 6.38,
+      "texto": "Vos revisás y guardás: decide una persona"
+    },
+    {
+      "tipo": "src",
+      "archivo": "345-inventario.mp4",
+      "ini": 82.5,
+      "fin": 87.2,
+      "dur": 4.01,
+      "texto": "Queda registrado con sus fotos"
+    },
+    {
+      "tipo": "cierre",
+      "dur": 6.0
+    }
+  ],
+  "subtitulos": [
+    [
+      "00:00.000",
+      "00:02.200",
+      "¿Cuánto equipo tiene el club y dónde está?"
+    ],
+    [
+      "00:02.700",
+      "00:06.800",
+      "App club usa inteligencia artificial para que armes el inventario desde el celular."
+    ],
+    [
+      "00:07.200",
+      "00:09.500",
+      "Entrás a Inventario y cargás un ítem nuevo."
+    ],
+    [
+      "00:09.900",
+      "00:12.500",
+      "Le sacás una foto al objeto o la elegís de la galería."
+    ],
+    [
+      "00:12.800",
+      "00:17.600",
+      "La inteligencia artificial la mira y te propone el nombre, la categoría y una descripción."
+    ],
+    [
+      "00:17.900",
+      "00:24.000",
+      "Vos revisás, corregís lo que haga falta y guardás: la sugerencia es automática, pero decide una persona."
+    ],
+    [
+      "00:24.300",
+      "00:27.800",
+      "El ítem queda registrado con sus fotos, a mano de todo el staff."
+    ],
+    [
+      "00:28.100",
+      "00:30.900",
+      "Más info en appclub.net.ar"
+    ]
+  ]
+}
