@@ -95,7 +95,12 @@ p { margin: 0; }
 .prose { max-width: 64ch; }
 
 /* cabecera */
-.top { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between; padding-block: 18px; position: relative; z-index: 2; }
+/* pegada arriba al hacer scroll; arriba de todo queda transparente para no tapar las curvas
+   del arranque. El fondo se estira a todo el ancho con box-shadow + clip-path (la cabecera
+   vive dentro de .wrap). .pegada la pone el script de abajo de la cabecera. */
+.top { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between; padding-block: 18px; position: sticky; top: 0; z-index: 5; border-bottom: 1px solid transparent; clip-path: inset(0 -100vmax); transition: background-color .2s, box-shadow .2s; }
+.top.pegada { background: var(--bg); box-shadow: 0 0 0 100vmax var(--bg); border-image: linear-gradient(var(--line), var(--line)) 0 0 1 0 / 0 0 1px 0 / 0 100vmax; }
+html { scroll-padding-top: 76px; }
 .brand { display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; border-radius: 6px; }
 .brand svg { display: block; height: 32px; width: auto; }
 .tema { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 4px 12px; font: inherit; font-size: 0.85rem; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
@@ -104,6 +109,15 @@ p { margin: 0; }
 .top nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
 .top nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding-block: 4px; border-bottom: 2px solid transparent; }
 .top nav a:hover { border-bottom-color: var(--accent); }
+/* en celular el menú va en una sola fila con scroll horizontal, así la cabecera no ocupa media pantalla */
+@media (max-width: 640px) {
+  .top { gap: 8px; }
+  .top nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; gap: 18px; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a { white-space: nowrap; }
+  html { scroll-padding-top: 116px; }
+}
+@media (prefers-reduced-motion: reduce) { .top { transition: none; } }
 
 /* logo appClub (brand/): colores desde las variables, así sigue también el tema elegido a mano */
 .logo .l-sq { fill: var(--logo-sq); }
@@ -290,6 +304,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       <a href="#apoyar">Apoyar</a>
     </nav>
   </header>
+  <script>(function () { var t = document.querySelector('.top'); function f() { t.classList.toggle('pegada', window.scrollY > 8); } window.addEventListener('scroll', f, { passive: true }); f(); })();</script>
 
   <main id="contenido">
     <section class="hero" id="inicio" aria-labelledby="t-hero">
