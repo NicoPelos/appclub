@@ -12,8 +12,7 @@ Este repositorio es una presentación del proyecto: documentación de arquitectu
 |---|---|---|
 | Backend | API única para todos los clientes | Node.js 20, Express 5, MongoDB 6 (replica set) con Mongoose, JWT, vitest |
 | App móvil | App de socios y staff, también como PWA | Expo, React Native, TypeScript |
-| Panel web | Panel del staff para pantalla grande | React 19, TypeScript, Vite, Tailwind |
-| Panel de superadministración | Gestión de clubes, roles, usuarios y auditoría | React, Vite, Tailwind |
+| Panel web | Panel del staff para pantalla grande; incluye las pantallas del superadministrador (clubes, roles, usuarios y auditoría) | React 19, TypeScript, Vite, Tailwind |
 
 Infraestructura: Docker Compose sobre una Raspberry Pi 5 con SSD, publicada con un túnel de Cloudflare. CI en GitHub Actions. Integraciones: Mercado Pago, Google (OAuth, Sheets, Drive para backups) y notificaciones push de Expo.
 
