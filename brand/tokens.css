@@ -1,7 +1,7 @@
 /*
- * Tokens de color de appClub. Los mismos en la web, el panel de staff y el de
- * superadmin. Por defecto siguen el tema del sistema; un data-theme="light" o
- * "dark" en <html> fuerza uno (los paneles lo guardan desde el menú del usuario).
+ * Tokens de color de appClub. Los mismos en la web y en el panel de staff
+ * (que incluye las pantallas del superadmin). Por defecto siguen el tema del sistema; un data-theme="light" o
+ * "dark" en <html> fuerza uno (el panel lo guarda desde el menú del usuario).
  *
  * Contrastes medidos (WCAG; texto pide 4,5:1, bordes de controles 3:1):
  *   claro  texto 14,9 · suave 7,1 · acento 7,4 · blanco sobre acento 7,9 · borde de control 3,1

@@ -1,6 +1,6 @@
 # Arquitectura
 
-appCARC tiene una sola API (Node 20, Express 5, Mongoose sobre MongoDB) y tres clientes: la app móvil de socios y staff (Expo / React Native, también como PWA), el panel web del staff (React) y el panel del superadministrador (React). Los tres comparten el mismo login (JWT) y los mismos permisos.
+appCARC tiene una sola API (Node 20, Express 5, Mongoose sobre MongoDB) y dos clientes: la app móvil de socios y staff (Expo / React Native, también como PWA) y el panel web (React), que tiene las pantallas del staff y las del superadministrador. Los dos comparten el mismo login (JWT) y los mismos permisos.
 
 Cada recurso del backend vive en su carpeta, con la misma estructura:
 
@@ -75,11 +75,11 @@ El sistema es multi-club. En producción hoy corren el Club Andino Río Cuarto y
 
 Los permisos son strings con la forma `recurso:accion`: `socios:read`, `socios:create`, `cobros:write`, `inventario:write`, `cobros:precio-historico`. Son más de 50, definidos en un único módulo de constantes.
 
-- **Roles por club:** cada club tiene sus roles (admin, secretaría, profesor, colaborador, socio…) y cada rol es una lista de permisos. El superadministrador los edita desde su panel.
+- **Roles por club:** cada club tiene sus roles (admin, secretaría, profesor, colaborador, socio…) y cada rol es una lista de permisos. El superadministrador los edita desde sus pantallas del panel web.
 - **Chequeo declarativo:** las rutas usan middleware (`authorize(PERMISOS.COBROS_WRITE)`); los handlers no chequean permisos a mano. Hay una variante para "el propio socio o quien tenga permiso", por ejemplo para que un socio vea su deuda.
 - **Caché:** los permisos de cada club se guardan en memoria del proceso durante 5 minutos. Editar un rol desde la API invalida la caché de ese club al momento.
 - **Superadministrador:** es un rol fuera de los clubes. Gestiona clubes, roles y usuarios, y pasa todos los chequeos.
-- **Clientes:** los tres reciben los permisos del usuario y ocultan lo que no puede usar. La autorización real ocurre siempre en el backend.
+- **Clientes:** los dos reciben los permisos del usuario y ocultan lo que no puede usar. La autorización real ocurre siempre en el backend.
 
 ## Operación
 
@@ -93,8 +93,8 @@ Todo corre en una **Raspberry Pi 5 con SSD**. Un único `docker-compose.yml` lev
 | `mongo` | MongoDB 6 como replica set de un nodo (necesario para transacciones), con los datos en el SSD. |
 | `mongo-init` | Inicializa el replica set en el primer arranque. |
 | `mongo-express` | Interfaz web de administración de la base, de uso interno. |
-| `staff`, `superadmin` | Paneles web compilados, servidos por nginx. |
-| `gateway` | nginx que enruta `/`, `/staff/`, `/admin/` y `/api/` al servicio que corresponde. |
+| `staff` | Panel web compilado (staff y superadmin), servido por nginx. |
+| `gateway` | nginx que enruta `/`, `/staff/` y `/api/` al servicio que corresponde. |
 | `cloudflared` | Túnel de salida hacia Cloudflare: publica el gateway con dominio propio y HTTPS sin abrir puertos en el router. |
 
 El gateway tiene un listener para cada camino de entrada. Solo el que está detrás del túnel confía en el header de IP del cliente que agrega el proxy. El otro lo ignora, así nadie puede falsificarlo desde afuera.

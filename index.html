@@ -453,7 +453,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       <figure class="diagrama">
         <svg viewBox="0 0 980 470" role="img" aria-labelledby="dg-t dg-d">
           <title id="dg-t">Arquitectura de appClub</title>
-          <desc id="dg-d">Las apps y los paneles llegan por Cloudflare a una Raspberry Pi. Ahí, un túnel entrega el tráfico a un gateway nginx, que lo pasa a la API Node.js, que guarda en MongoDB. La API habla con Mercado Pago, el login de Google, Google Sheets y las notificaciones.</desc>
+          <desc id="dg-d">La app y el panel llegan por Cloudflare a una Raspberry Pi. Ahí, un túnel entrega el tráfico a un gateway nginx, que lo pasa a la API Node.js, que guarda en MongoDB. La API habla con Mercado Pago, el login de Google, Google Sheets y las notificaciones.</desc>
           <defs>
             <marker id="pt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="punta"/></marker>
           </defs>
@@ -461,9 +461,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
           <rect class="caja" x="20" y="50" width="220" height="74" rx="4"/>
           <text x="36" y="80">App móvil</text><text x="36" y="100" class="sub">Expo / React Native: Android y PWA</text>
           <rect class="caja" x="20" y="144" width="220" height="74" rx="4"/>
-          <text x="36" y="174">Panel de staff</text><text x="36" y="194" class="sub">React + TypeScript</text>
-          <rect class="caja" x="20" y="238" width="220" height="74" rx="4"/>
-          <text x="36" y="268">Panel de superadmin</text><text x="36" y="288" class="sub">React, varios clubes</text>
+          <text x="36" y="174">Panel de staff</text><text x="36" y="194" class="sub">React + TypeScript, con superadmin</text>
           <text x="290" y="34" class="cap">BORDE</text>
           <rect class="caja" x="290" y="130" width="150" height="110" rx="4"/>
           <text x="306" y="164">Cloudflare</text>
@@ -471,13 +469,12 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
           <text x="306" y="204" class="sub">Túnel de salida</text>
           <path class="flecha" d="M240 87 L290 160" marker-end="url(#pt)"/>
           <path class="flecha" d="M240 181 L290 185" marker-end="url(#pt)"/>
-          <path class="flecha" d="M240 275 L290 210" marker-end="url(#pt)"/>
           <rect class="zona" x="490" y="22" width="270" height="426" rx="8"/>
           <text x="506" y="46" class="cap">RASPBERRY PI · DOCKER COMPOSE</text>
           <rect class="caja" x="510" y="64" width="230" height="52" rx="4"/>
           <text x="526" y="86">cloudflared</text><text x="526" y="104" class="sub">recibe el túnel</text>
           <rect class="caja" x="510" y="146" width="230" height="52" rx="4"/>
-          <text x="526" y="168">Gateway nginx</text><text x="526" y="186" class="sub">rutas /, /staff, /admin, /api</text>
+          <text x="526" y="168">Gateway nginx</text><text x="526" y="186" class="sub">rutas /, /staff, /api</text>
           <rect class="caja fuerte" x="510" y="228" width="230" height="86" rx="4"/>
           <text x="526" y="254">API Node.js + Express</text>
           <text x="526" y="274" class="sub">un club por cada dato (clubId)</text>
@@ -512,7 +509,6 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
             <tr><th scope="row">Base de datos</th><td>MongoDB 6, conjunto de réplicas</td></tr>
             <tr><th scope="row">Panel web</th><td>React 19, TypeScript, Vite, Tailwind CSS 4</td></tr>
             <tr><th scope="row">App móvil</th><td>Expo SDK 56, React Native, PWA</td></tr>
-            <tr><th scope="row">Superadmin</th><td>React, Vite, Tailwind CSS</td></tr>
             <tr><th scope="row">Pagos</th><td>Mercado Pago: cobros, webhooks y conciliación</td></tr>
             <tr><th scope="row">Infra</th><td>Docker Compose, nginx, Cloudflare Tunnel</td></tr>
             <tr><th scope="row">Calidad</th><td>Vitest, GitHub Actions, Stryker</td></tr>
@@ -536,7 +532,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
           <span class="pill ok">En producción</span>
           <ul>
             <li>App Android y versión web para iPhone</li>
-            <li>Panel de staff y panel de superadmin</li>
+            <li>Panel de staff, con las pantallas del superadmin</li>
             <li>Cuotas y cobros con Mercado Pago</li>
             <li>Escuelita de escalada y muro libre con QR</li>
             <li>Notificaciones y exportación a Google Sheets</li>
