@@ -532,22 +532,16 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
               </div>
             </div>
             <div class="carrito">
-              <p class="carrito-ejemplo-nota">Con esos mismos montos (cuota de 2 meses + escuelita + remera):</p>
-              <ul class="carrito-items">
-                <li><span>Cuota social (2 meses)</span><strong>$30.000</strong></li>
-                <li><span>Cuota Escuelita</span><strong>$20.000</strong></li>
-                <li><span>Remera del club</span><strong>$18.000</strong></li>
-              </ul>
+              <p class="carrito-ejemplo-nota">Con esos mismos montos — probá cambiarlos:</p>
+              <div class="carrito-inputs">
+                <div class="carrito-monto"><label for="item-cuota">Cuota social (2 meses)</label><span>$</span><input type="number" id="item-cuota" inputmode="numeric" min="0" step="500" value="30000"></div>
+                <div class="carrito-monto"><label for="item-escuelita">Cuota Escuelita</label><span>$</span><input type="number" id="item-escuelita" inputmode="numeric" min="0" step="500" value="20000"></div>
+                <div class="carrito-monto"><label for="item-remera">Remera del club</label><span>$</span><input type="number" id="item-remera" inputmode="numeric" min="0" step="500" value="18000"></div>
+              </div>
               <div class="carrito-resumen">
                 <div class="carrito-fila"><span>Total</span><strong id="carrito-total">$68.000</strong></div>
                 <div class="carrito-fila carrito-comision"><span>Comisión appClub (3%)</span><strong id="carrito-comision">−$2.040</strong></div>
                 <div class="carrito-fila carrito-neto"><span>Recibe el club</span><strong id="carrito-neto">$65.960</strong></div>
-              </div>
-              <p class="carrito-nota">Probá con tus propios números:</p>
-              <div class="carrito-inputs">
-                <div class="carrito-monto"><label for="item-cuota">Cuota social</label><span>$</span><input type="number" id="item-cuota" inputmode="numeric" min="0" step="500" value="30000"></div>
-                <div class="carrito-monto"><label for="item-escuelita">Escuelita</label><span>$</span><input type="number" id="item-escuelita" inputmode="numeric" min="0" step="500" value="20000"></div>
-                <div class="carrito-monto"><label for="item-remera">Remera</label><span>$</span><input type="number" id="item-remera" inputmode="numeric" min="0" step="500" value="18000"></div>
               </div>
             </div>
           </div>
@@ -584,16 +578,11 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       .telefono-cuenta .pantalla img{display:block;width:100%;height:100%;object-fit:contain;background:#0B0A1F}
       .carrito{flex:1 1 280px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
       .carrito-ejemplo-nota{font-weight:600;margin:0 0 12px;font-size:0.95rem}
-      .carrito-items{list-style:none;margin:0 0 16px;padding:0}
-      .carrito-items li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:0.95rem}
-      .carrito-items li:first-child{border-top:0}
-      .carrito-items li span{color:var(--muted);font-family:var(--font-body)}
-      .carrito-resumen{padding-top:14px;border-top:1px dashed var(--line)}
+      .carrito-resumen{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
       .carrito-fila{display:flex;justify-content:space-between;gap:16px;padding:4px 0;font-family:var(--font-mono);font-size:0.98rem}
       .carrito-comision strong{color:var(--muted)}
       .carrito-neto{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font-size:1.1rem}
       .carrito-neto span,.carrito-neto strong{font-weight:700}
-      .carrito-nota{margin:18px 0 10px;color:var(--muted);font-size:0.88rem;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
       .carrito-inputs{display:flex;flex-direction:column;gap:10px}
       .carrito-monto{display:flex;align-items:center;gap:8px}
       .carrito-monto label{flex:1;color:var(--muted);font-size:0.92rem}
