@@ -527,7 +527,6 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
             <div class="sim-input">
               <span>$</span>
               <input type="range" id="sim-monto" min="0" max="5000000" step="50000" value="1000000">
-              <output id="sim-valor">1.000.000</output>
             </div>
             <p class="sim-resultado">Ese mes, appClub se queda con <strong>una fracción chica</strong> de esos <strong id="sim-eco">$1.000.000</strong> — se descuenta sola, en el momento del pago. El resto es <strong>todo tuyo</strong>, como siempre.</p>
           </div>
@@ -562,7 +561,6 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       .sim-input{display:flex;align-items:center;gap:12px}
       .sim-input span{font-family:var(--font-mono);font-size:1.25rem;color:var(--muted)}
       .sim-input input[type=range]{flex:1;accent-color:var(--accent)}
-      .sim-input output{font-family:var(--font-mono);font-size:1.25rem;font-weight:700;min-width:9ch;text-align:right}
       .sim-resultado{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:1.02rem}
       .precios-incluye{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:24px}
       @media (max-width:860px){
@@ -574,10 +572,9 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     </style>
     <script>
       (function(){
-        var r=document.getElementById('sim-monto'), v=document.getElementById('sim-valor'),
-            eco=document.getElementById('sim-eco');
+        var r=document.getElementById('sim-monto'), eco=document.getElementById('sim-eco');
         function fmt(n){return new Intl.NumberFormat('es-AR').format(n)}
-        function update(){var n=Number(r.value); v.textContent=fmt(n); eco.textContent='$'+fmt(n)}
+        function update(){var n=Number(r.value); eco.textContent='$'+fmt(n)}
         if(r){r.addEventListener('input', update); update()}
       })();
     </script>
