@@ -512,32 +512,75 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       </div>
     </section>
 
-    <section class="s" id="precios" aria-labelledby="t-precios">
-      <div class="s-head">
-        <h2 id="t-precios">Cómo se cobra</h2>
-        <p class="lede">Sin abono fijo ni costo de entrada: appClub se queda con un porcentaje de lo que tu club cobra a través de la app, nada más.</p>
+    <section class="s precios" id="precios" aria-labelledby="t-precios">
+      <div class="precios-grid">
+        <figure class="precios-foto">
+          <img src="../assets/muro-color.webp" width="2084" height="2605" alt="Tres personas y un perro frente al muro de escalada, con presas de colores" loading="lazy">
+        </figure>
+        <div class="precios-contenido">
+          <div class="s-head">
+            <h2 id="t-precios">Pagás según lo que cobrás, nunca más</h2>
+            <p class="lede">Nada de abono fijo ni costo de entrada. appClub se queda con una fracción de lo que tu club cobra por la app. ¿Cobraste poco este mes? Pagás poco. ¿No cobraste nada? No pagás nada.</p>
+          </div>
+          <div class="simulador">
+            <label for="sim-monto">Más o menos, ¿cuánto cobra tu club por mes a través de la app?</label>
+            <div class="sim-input">
+              <span>$</span>
+              <input type="range" id="sim-monto" min="0" max="5000000" step="50000" value="1000000">
+              <output id="sim-valor">1.000.000</output>
+            </div>
+            <p class="sim-resultado">Ese mes, appClub se queda con <strong>una fracción chica</strong> de esos <strong id="sim-eco">$1.000.000</strong> — se descuenta sola, en el momento del pago. El resto es <strong>todo tuyo</strong>, como siempre.</p>
+          </div>
+          <div class="roles precios-incluye">
+            <article class="rol">
+              <h3>Qué incluye</h3>
+              <ul>
+                <li>App para los socios y panel para la administración.</li>
+                <li>Cobro con Mercado Pago, conciliado solo contra la caja.</li>
+                <li>Notificaciones y avisos a los socios.</li>
+                <li>Escuelita, muro libre y exportación contable, como opciones aparte.</li>
+              </ul>
+            </article>
+            <article class="rol">
+              <h3>Cómo se descuenta</h3>
+              <ul>
+                <li>Una fracción de cada cobro que un socio hace por la app, nunca de lo que el club cobra por afuera (efectivo, transferencia).</li>
+                <li>Se descuenta sola, antes de que el dinero llegue a la cuenta del club. Nada que pagar aparte, nada que facturar a mano.</li>
+                <li>El número exacto se charla según tu club: tamaño, cuánto cobrás hoy y cómo. Sin sorpresas.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="roles">
-        <article class="rol">
-          <h3>Qué incluye</h3>
-          <ul>
-            <li>App para los socios y panel para la administración.</li>
-            <li>Cobro con Mercado Pago, conciliado solo contra la caja.</li>
-            <li>Notificaciones y avisos a los socios.</li>
-            <li>Escuelita, muro libre y exportación contable, como opciones aparte.</li>
-          </ul>
-        </article>
-        <article class="rol">
-          <h3>Cómo se descuenta</h3>
-          <ul>
-            <li>Un porcentaje de cada cobro que un socio hace por la app, nunca de lo que el club cobra por afuera (efectivo, transferencia).</li>
-            <li>Se descuenta solo, en el momento del pago, antes de que el dinero llegue a la cuenta del club. No hay que pagar nada por separado ni facturar a mano.</li>
-            <li>Si un mes el club no cobra nada por la app, ese mes no se paga nada. No hay un mínimo fijo.</li>
-          </ul>
-        </article>
-      </div>
-      <p class="prose" style="margin-top:22px"><strong>Un ejemplo para que se entienda:</strong> si tu club cobra $2.000.000 por mes a través de la app, ese mes se descuenta automáticamente una fracción chica de esos $2.000.000. Si en cambio cobra $300.000, se descuenta la misma fracción de esa cifra más chica — nunca un monto fijo, nunca por adelantado. El porcentaje exacto se conversa según el club: el tamaño, cuánto cobra hoy y cómo lo cobra. En la charla te lo cuento con un ejemplo con tus propios números.</p>
     </section>
+    <style>
+      .precios-grid{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,48px);align-items:start}
+      .precios-foto{margin:0;border-radius:16px;overflow:hidden;position:sticky;top:88px}
+      .precios-foto img{width:100%;height:clamp(360px,60vh,620px);object-fit:cover;object-position:50% 25%;display:block}
+      .simulador{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-top:22px}
+      .simulador label{font-weight:600;display:block;margin-bottom:14px}
+      .sim-input{display:flex;align-items:center;gap:12px}
+      .sim-input span{font-family:var(--font-mono);font-size:1.25rem;color:var(--muted)}
+      .sim-input input[type=range]{flex:1;accent-color:var(--accent)}
+      .sim-input output{font-family:var(--font-mono);font-size:1.25rem;font-weight:700;min-width:9ch;text-align:right}
+      .sim-resultado{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:1.02rem}
+      .precios-incluye{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:24px}
+      @media (max-width:860px){
+        .precios-grid{grid-template-columns:minmax(0,1fr)}
+        .precios-foto{position:static}
+        .precios-foto img{height:260px}
+        .precios-incluye{grid-template-columns:minmax(0,1fr)}
+      }
+    </style>
+    <script>
+      (function(){
+        var r=document.getElementById('sim-monto'), v=document.getElementById('sim-valor'),
+            eco=document.getElementById('sim-eco');
+        function fmt(n){return new Intl.NumberFormat('es-AR').format(n)}
+        function update(){var n=Number(r.value); v.textContent=fmt(n); eco.textContent='$'+fmt(n)}
+        if(r){r.addEventListener('input', update); update()}
+      })();
+    </script>
 
     <section class="s" id="empezar" aria-labelledby="t-empezar">
       <div class="s-head">
