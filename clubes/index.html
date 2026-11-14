@@ -318,8 +318,8 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
 .hero-foto .lede { color: var(--muted); }
 .telefono { justify-self: center; position: relative; width: min(100%, 250px); aspect-ratio: 420 / 933; padding: 9px; border-radius: 34px; background: #0B0A1F; box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 24px 60px rgba(0,0,0,.45); }
 .telefono .pantalla { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 26px; background: #14122E; }
-.telefono img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
-.telefono img.activa { opacity: 1; }
+.telefono-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
+.telefono-hero img.activa { opacity: 1; }
 .telefono-pie { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; }
 .puntos { display: flex; gap: 6px; }
 .puntos span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.3); transition: background-color .3s; }
@@ -344,7 +344,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
 .carrusel-nav button:hover:not(:disabled) { background: var(--ok-bg); }
 .carrusel-nav button:disabled { opacity: .35; cursor: default; }
 @media (max-width: 860px) { .carrusel .pantallas figure { flex-basis: 62%; } }
-@media (prefers-reduced-motion: reduce) { .carrusel .pantallas { scroll-behavior: auto; } .telefono img, .puntos span { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .carrusel .pantallas { scroll-behavior: auto; } .telefono-hero img, .puntos span { transition: none; } }
 
 /* aparición suave al bajar. Solo con JS (clase .js) y sin «reducir movimiento»: sin eso,
    todo se ve de entrada. */
@@ -383,7 +383,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         </div>
       </div>
       <div class="telefono-col">
-        <div class="telefono" role="img" aria-label="La app en un celular, pasando por el ingreso, el inicio del socio, sus cuotas y un cobro en secretaría">
+        <div class="telefono telefono-hero" role="img" aria-label="La app en un celular, pasando por el ingreso, el inicio del socio, sus cuotas y un cobro en secretaría">
           <div class="pantalla" aria-hidden="true">
             <img class="activa" src="../assets/app-login.webp" width="420" height="933" alt="">
             <img src="../assets/app-inicio.webp" width="420" height="933" alt="" loading="lazy">
@@ -520,16 +520,36 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <div class="precios-contenido">
           <div class="s-head">
             <h2 id="t-precios">Pagás según lo que cobrás, nunca más</h2>
-            <p class="lede">Nada de abono fijo ni costo de entrada. appClub se queda con una fracción de lo que tu club cobra por la app. ¿Cobraste poco este mes? Pagás poco. ¿No cobraste nada? No pagás nada.</p>
+            <p class="lede">Nada de abono fijo ni costo de entrada. appClub se queda con el 3% de lo que tu club cobra por la app. ¿Cobraste poco este mes? Pagás poco. ¿No cobraste nada? No pagás nada.</p>
           </div>
-          <div class="simulador">
-            <label for="sim-monto">Más o menos, ¿cuánto cobra tu club por mes a través de la app?</label>
-            <div class="sim-input">
-              <span>$</span>
-              <input type="range" id="sim-monto" min="0" max="5000000" step="50000" value="1000000">
-              <output id="sim-valor">1.000.000</output>
+          <p class="carrito-titulo">Así se ve hoy en la app: el socio paga cuota, escuelita y remera juntas, en un solo pago.</p>
+          <div class="carrito-demo">
+            <div class="precios-telefono">
+              <div class="telefono telefono-cuenta">
+                <div class="pantalla">
+                  <img src="../assets/full-cuenta.webp" width="540" height="1165" alt="Pantalla real de la app: cuota social de dos meses, cuota de escuelita y remera del club, con el botón Pagar $68.000 con Mercado Pago" loading="lazy">
+                </div>
+              </div>
             </div>
-            <p class="sim-resultado">Ese mes, appClub se queda con <strong>una fracción chica</strong> de esos <strong id="sim-eco">$1.000.000</strong> — se descuenta sola, en el momento del pago. El resto es <strong>todo tuyo</strong>, como siempre.</p>
+            <div class="carrito">
+              <p class="carrito-ejemplo-nota">Con esos mismos montos (cuota de 2 meses + escuelita + remera):</p>
+              <ul class="carrito-items">
+                <li><span>Cuota social (2 meses)</span><strong>$30.000</strong></li>
+                <li><span>Cuota Escuelita</span><strong>$20.000</strong></li>
+                <li><span>Remera del club</span><strong>$18.000</strong></li>
+              </ul>
+              <div class="carrito-resumen">
+                <div class="carrito-fila"><span>Total</span><strong id="carrito-total">$68.000</strong></div>
+                <div class="carrito-fila carrito-comision"><span>Comisión appClub (3%)</span><strong id="carrito-comision">−$2.040</strong></div>
+                <div class="carrito-fila carrito-neto"><span>Recibe el club</span><strong id="carrito-neto">$65.960</strong></div>
+              </div>
+              <p class="carrito-nota">Probá con tus propios números:</p>
+              <div class="carrito-inputs">
+                <div class="carrito-monto"><label for="item-cuota">Cuota social</label><span>$</span><input type="number" id="item-cuota" inputmode="numeric" min="0" step="500" value="30000"></div>
+                <div class="carrito-monto"><label for="item-escuelita">Escuelita</label><span>$</span><input type="number" id="item-escuelita" inputmode="numeric" min="0" step="500" value="20000"></div>
+                <div class="carrito-monto"><label for="item-remera">Remera</label><span>$</span><input type="number" id="item-remera" inputmode="numeric" min="0" step="500" value="18000"></div>
+              </div>
+            </div>
           </div>
           <div class="roles precios-incluye">
             <article class="rol">
@@ -544,9 +564,9 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
             <article class="rol">
               <h3>Cómo se descuenta</h3>
               <ul>
-                <li>Una fracción de cada cobro que un socio hace por la app, nunca de lo que el club cobra por afuera (efectivo, transferencia).</li>
-                <li>Se descuenta sola, antes de que el dinero llegue a la cuenta del club. Nada que pagar aparte, nada que facturar a mano.</li>
-                <li>El número exacto se charla según tu club: tamaño, cuánto cobrás hoy y cómo. Sin sorpresas.</li>
+                <li>El 3% de cada cobro que un socio hace por la app, nunca de lo que el club cobra por afuera (efectivo, transferencia).</li>
+                <li>Se descuenta solo, antes de que el dinero llegue a la cuenta del club. Nada que pagar aparte, nada que facturar a mano.</li>
+                <li>Es el mismo 3% para cuotas, escuelita, remeras o cualquier otra cosa que se cobre por la app. Sin sorpresas.</li>
               </ul>
             </article>
           </div>
@@ -557,13 +577,29 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       .precios-grid{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,48px);align-items:start}
       .precios-foto{margin:0;border-radius:16px;overflow:hidden;position:sticky;top:88px}
       .precios-foto img{width:100%;height:clamp(360px,60vh,620px);object-fit:cover;object-position:50% 25%;display:block}
-      .simulador{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-top:22px}
-      .simulador label{font-weight:600;display:block;margin-bottom:14px}
-      .sim-input{display:flex;align-items:center;gap:12px}
-      .sim-input span{font-family:var(--font-mono);font-size:1.25rem;color:var(--muted)}
-      .sim-input input[type=range]{flex:1;accent-color:var(--accent)}
-      .sim-input output{font-family:var(--font-mono);font-size:1.25rem;font-weight:700;min-width:9ch;text-align:right}
-      .sim-resultado{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:1.02rem}
+      .carrito-titulo{font-weight:600;margin:22px 0 16px;font-size:1.05rem}
+      .carrito-demo{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+      .precios-telefono{flex:0 0 210px}
+      .telefono-cuenta{width:210px;max-width:100%}
+      .telefono-cuenta .pantalla img{display:block;width:100%;height:100%;object-fit:contain;background:#0B0A1F}
+      .carrito{flex:1 1 280px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+      .carrito-ejemplo-nota{font-weight:600;margin:0 0 12px;font-size:0.95rem}
+      .carrito-items{list-style:none;margin:0 0 16px;padding:0}
+      .carrito-items li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:0.95rem}
+      .carrito-items li:first-child{border-top:0}
+      .carrito-items li span{color:var(--muted);font-family:var(--font-body)}
+      .carrito-resumen{padding-top:14px;border-top:1px dashed var(--line)}
+      .carrito-fila{display:flex;justify-content:space-between;gap:16px;padding:4px 0;font-family:var(--font-mono);font-size:0.98rem}
+      .carrito-comision strong{color:var(--muted)}
+      .carrito-neto{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font-size:1.1rem}
+      .carrito-neto span,.carrito-neto strong{font-weight:700}
+      .carrito-nota{margin:18px 0 10px;color:var(--muted);font-size:0.88rem;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+      .carrito-inputs{display:flex;flex-direction:column;gap:10px}
+      .carrito-monto{display:flex;align-items:center;gap:8px}
+      .carrito-monto label{flex:1;color:var(--muted);font-size:0.92rem}
+      .carrito-monto span{font-family:var(--font-mono);color:var(--muted)}
+      .carrito-monto input{width:8ch;font:inherit;font-family:var(--font-mono);background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 8px;text-align:right}
+      @media (max-width:860px){.carrito-demo{flex-direction:column;align-items:center}.telefono-cuenta{width:min(72vw,230px)}}
       .precios-incluye{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:24px}
       @media (max-width:860px){
         .precios-grid{grid-template-columns:minmax(0,1fr)}
@@ -574,11 +610,20 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     </style>
     <script>
       (function(){
-        var r=document.getElementById('sim-monto'), v=document.getElementById('sim-valor'),
-            eco=document.getElementById('sim-eco');
-        function fmt(n){return new Intl.NumberFormat('es-AR').format(n)}
-        function update(){var n=Number(r.value); v.textContent=fmt(n); eco.textContent='$'+fmt(n)}
-        if(r){r.addEventListener('input', update); update()}
+        var TASA = 0.03;
+        var items = [document.getElementById('item-cuota'), document.getElementById('item-escuelita'), document.getElementById('item-remera')];
+        var elTotal = document.getElementById('carrito-total'), elComision = document.getElementById('carrito-comision'),
+            elNeto = document.getElementById('carrito-neto');
+        function fmt(n){return '$' + new Intl.NumberFormat('es-AR').format(Math.round(n))}
+        function update(){
+          var total = items.reduce(function(sum, el){ return sum + (Number(el.value) || 0) }, 0);
+          var comision = total * TASA;
+          if(elTotal){ elTotal.textContent = fmt(total) }
+          if(elComision){ elComision.textContent = '−' + fmt(comision) }
+          if(elNeto){ elNeto.textContent = fmt(total - comision) }
+        }
+        items.forEach(function(el){ if(el){ el.addEventListener('input', update) } });
+        update();
       })();
     </script>
 
@@ -598,7 +643,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <h2 id="t-preguntas">Preguntas frecuentes</h2>
       </div>
       <div class="faq">
-        <details><summary>¿Cuánto cuesta?</summary><p>No hay abono fijo: appClub se queda con un porcentaje de lo que el club cobra a través de la app, nada de lo que cobra por afuera. Si un mes no cobra nada por la app, no paga nada. <a href="#precios">Ver cómo se cobra</a>, con el detalle de qué incluye.</p></details>
+        <details><summary>¿Cuánto cuesta?</summary><p>No hay abono fijo: appClub se queda con el 3% de lo que el club cobra a través de la app, nada de lo que cobra por afuera. Si un mes no cobra nada por la app, no paga nada. <a href="#precios">Ver cómo se cobra</a>, con un ejemplo armado.</p></details>
         <details><summary>¿Hay que instalar algo?</summary><p>Los socios y el staff usan la app en el celular: en Android se descarga desde el sitio y en iPhone se agrega desde Safari a la pantalla de inicio. La administración también tiene un panel para usar en la computadora.</p></details>
         <details><summary>¿A dónde va la plata de los pagos?</summary><p>Directo a la cuenta de Mercado Pago del club. appClub no toca la plata: registra el pago y lo suma a la caja. Por defecto se ofrecen transferencia y dinero en cuenta, que le cuestan menos al club que la tarjeta.</p></details>
         <details><summary>¿Se puede seguir cobrando en efectivo?</summary><p>Sí. La secretaría registra cobros en efectivo o por transferencia, y todo queda en la misma caja que los pagos por Mercado Pago.</p></details>
@@ -690,7 +735,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
 /* Celular del arranque: cambia de pantalla cada 3,5 s. Se pausa con el botón, al pasar
    el mouse o si la pestaña no está visible; con «reducir movimiento» queda fija. */
 (function () {
-  var imgs = document.querySelectorAll('.telefono img');
+  var imgs = document.querySelectorAll('.telefono-hero img');
   var puntos = document.querySelectorAll('.puntos span');
   var btn = document.getElementById('pausa');
   if (imgs.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -705,7 +750,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     if (correr && !timer) timer = setInterval(function () { mostrar(i + 1); }, 3500);
     if (!correr && timer) { clearInterval(timer); timer = null; }
   }
-  var tel = document.querySelector('.telefono');
+  var tel = document.querySelector('.telefono-hero');
   tel.addEventListener('mouseenter', function () { encima = true; sincronizar(); });
   tel.addEventListener('mouseleave', function () { encima = false; sincronizar(); });
   document.addEventListener('visibilitychange', sincronizar);
