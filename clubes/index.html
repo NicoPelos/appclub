@@ -363,6 +363,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       <a href="#resuelve">Qué resuelve</a>
       <a href="#videos">Cómo se ve</a>
       <a href="#precios">Cómo se cobra</a>
+      <a href="#probar">Probar la app</a>
       <a href="#empezar">Cómo empezar</a>
       <a href="#preguntas">Preguntas</a>
       <a href="#contacto">Contacto</a>
@@ -615,6 +616,53 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         update();
       })();
     </script>
+
+    <section class="s" id="probar" aria-labelledby="t-probar">
+      <div class="s-head">
+        <h2 id="t-probar">Probá la app, de verdad</h2>
+        <p class="lede">No es una maqueta: es la PWA real, con un club de demostración que se resetea todas las noches. Entrá con estas credenciales.</p>
+      </div>
+      <div class="probar-demo">
+        <div class="probar-telefono-col">
+          <div class="telefono telefono-demo">
+            <div class="pantalla">
+              <iframe src="https://app.appclub.net.ar/demo/" title="Demo de appClub" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="probar-credenciales">
+          <p class="probar-credenciales-titulo">Credenciales del club demo</p>
+          <dl>
+            <div class="probar-cred-fila"><dt>Usuario (socio)</dt><dd><code>socio@demo.appclub.ar</code></dd></div>
+            <div class="probar-cred-fila"><dt>Contraseña</dt><dd><code>DemoSocio2026!</code></dd></div>
+          </dl>
+          <p class="prose">También podés entrar como secretaría, profesor o administración — pedímelas en la charla. Lo que cargues se borra solo esta noche.</p>
+          <a class="btn btn-ghost probar-link-movil" href="https://app.appclub.net.ar/demo/" target="_blank" rel="noopener">Abrir la demo en este celular</a>
+        </div>
+      </div>
+    </section>
+    <style>
+      .probar-demo{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-top:22px}
+      .probar-telefono-col{flex:0 0 210px}
+      .telefono-demo{width:210px;max-width:100%}
+      .telefono-demo .pantalla{background:#fff}
+      .telefono-demo iframe{width:100%;height:100%;border:0;display:block}
+      .probar-credenciales{flex:1 1 280px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+      .probar-credenciales-titulo{font-weight:600;margin:0 0 14px}
+      .probar-credenciales dl{margin:0}
+      .probar-cred-fila{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0;border-top:1px solid var(--line)}
+      .probar-cred-fila:first-child{border-top:0}
+      .probar-cred-fila dt{color:var(--muted)}
+      .probar-cred-fila dd{margin:0}
+      .probar-credenciales code{font-family:var(--font-mono);background:var(--next-bg);padding:2px 8px;border-radius:4px;font-size:0.92rem}
+      .probar-credenciales .prose{margin:16px 0 0;font-size:0.92rem;color:var(--muted)}
+      .probar-link-movil{display:none;margin-top:18px}
+      @media (max-width:640px){
+        .probar-telefono-col{display:none}
+        .probar-link-movil{display:inline-flex}
+      }
+      @media (min-width:641px) and (max-width:860px){.telefono-demo{width:min(60vw,230px)}}
+    </style>
 
     <section class="s" id="empezar" aria-labelledby="t-empezar">
       <div class="s-head">
