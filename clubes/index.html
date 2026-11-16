@@ -380,7 +380,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
         <p class="lede">appClub ordena las cuotas, los cobros, la asistencia y la comunicación con los socios. Lo usa todos los días el Club Andino Río Cuarto: los socios pagan desde el celular y la secretaría sabe al instante quién está al día.</p>
         <div class="actions">
           <a class="btn btn-primary" href="#contacto">Quiero conversarlo</a>
-          <a class="btn btn-ghost" href="#probar">Probar la demo</a>
+          <a class="btn btn-ghost" href="https://app.appclub.net.ar/probar/" target="_blank" rel="noopener">Probar la demo</a>
         </div>
       </div>
       <div class="telefono-col">
@@ -620,24 +620,27 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
     <section class="s" id="probar" aria-labelledby="t-probar">
       <div class="s-head">
         <h2 id="t-probar">Probá la app, de verdad</h2>
-        <p class="lede">No es una maqueta: es la PWA real, con un club de demostración que se resetea todas las noches. Entrá con estas credenciales.</p>
+        <p class="lede">No es una maqueta: es la app real, con un club de demostración que se resetea todas las noches. Tenés un usuario de prueba para cada rol.</p>
       </div>
       <div class="probar-demo">
         <div class="probar-telefono-col">
           <div class="telefono telefono-demo">
             <div class="pantalla">
-              <iframe src="https://app.appclub.net.ar/demo/" title="Demo de appClub" loading="lazy"></iframe>
+              <img src="../assets/app-login.webp" width="420" height="933" alt="Pantalla de ingreso de la app del club de demostración" loading="lazy">
             </div>
           </div>
         </div>
         <div class="probar-credenciales">
-          <p class="probar-credenciales-titulo">Credenciales del club demo</p>
+          <p class="probar-credenciales-titulo">Un usuario de prueba para cada rol</p>
           <dl>
-            <div class="probar-cred-fila"><dt>Usuario (socio)</dt><dd><code>socio@demo.appclub.ar</code></dd></div>
-            <div class="probar-cred-fila"><dt>Contraseña</dt><dd><code>DemoSocio2026!</code></dd></div>
+            <div class="probar-cred-fila"><dt>Socio</dt><dd>paga, credencial, visitas</dd></div>
+            <div class="probar-cred-fila"><dt>Secretaría</dt><dd>cobros e inscripciones</dd></div>
+            <div class="probar-cred-fila"><dt>Profesor</dt><dd>lista y horas</dd></div>
+            <div class="probar-cred-fila"><dt>Palestrero</dt><dd>visitas al muro</dd></div>
+            <div class="probar-cred-fila"><dt>Administración</dt><dd>caja, precios, roles</dd></div>
           </dl>
-          <p class="prose">También podés entrar como secretaría, profesor o administración — pedímelas en la charla. Lo que cargues se borra solo esta noche.</p>
-          <a class="btn btn-ghost probar-link-movil" href="https://app.appclub.net.ar/app/" target="_blank" rel="noopener">Abrir la demo en este celular</a>
+          <p class="prose">En la compu se abre la app adentro de un celular, con las credenciales al lado; en el celular, las credenciales y un botón para abrir la app. Lo que cargues se borra solo esta noche.</p>
+          <a class="btn btn-primary" style="margin-top:18px" href="https://app.appclub.net.ar/probar/" target="_blank" rel="noopener">Probar la demo</a>
         </div>
       </div>
     </section>
@@ -646,7 +649,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       .probar-telefono-col{flex:0 0 210px}
       .telefono-demo{width:210px;max-width:100%}
       .telefono-demo .pantalla{background:#fff}
-      .telefono-demo iframe{width:100%;height:100%;border:0;display:block}
+      .telefono-demo img{width:100%;height:100%;object-fit:cover;display:block}
       .probar-credenciales{flex:1 1 280px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
       .probar-credenciales-titulo{font-weight:600;margin:0 0 14px}
       .probar-credenciales dl{margin:0}
@@ -656,11 +659,7 @@ footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var
       .probar-cred-fila dd{margin:0}
       .probar-credenciales code{font-family:var(--font-mono);background:var(--next-bg);padding:2px 8px;border-radius:4px;font-size:0.92rem}
       .probar-credenciales .prose{margin:16px 0 0;font-size:0.92rem;color:var(--muted)}
-      .probar-link-movil{display:none;margin-top:18px}
-      @media (max-width:640px){
-        .probar-telefono-col{display:none}
-        .probar-link-movil{display:inline-flex}
-      }
+      @media (max-width:640px){.probar-telefono-col{display:none}}
       @media (min-width:641px) and (max-width:860px){.telefono-demo{width:min(60vw,230px)}}
     </style>
 
