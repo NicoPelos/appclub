@@ -2,7 +2,7 @@
 
 Sistema de gestión para clubes: socios, cuotas y cobros, pagos online, actividades (escuelita, muro de escalada, eventos), caja e inventario. Está en uso en el **Club Andino Río Cuarto** (Córdoba, Argentina), donde lo usan la secretaría, los profesores y los socios.
 
-**Demo:** https://app.appclub.net.ar/demo/. Manual por rol con usuarios de prueba; los datos son ficticios y se restablecen todas las noches.
+**Demo:** https://app.appclub.net.ar/probar/ (la app real, con usuarios de prueba para cada rol). **Manual por rol:** https://app.appclub.net.ar/demo/. Los datos son ficticios y se restablecen todas las noches.
 
 Este repositorio es una presentación del proyecto: documentación de arquitectura, un contrato de la API, una especificación y una parte del código con sus tests. El código completo está en repositorios privados.
 
